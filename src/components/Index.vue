@@ -7,7 +7,7 @@
   <button @click="filterByCategory('Breakfast')" class="category-button">Breakfast</button>
   <button @click="filterByCategory('Drinks')" class="category-button">Drinks</button>
   <button @click="filterByCategory('Wraps')" class="category-button">Wraps</button>
-  <button @click="clearFilters" class="display-all-button">All</button>
+  <button @click="clearFilters" class="display-all-button">Show All</button>
   
  
 </div>
