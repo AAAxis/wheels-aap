@@ -11,7 +11,7 @@
         <button @click="clearFilters" class="display-all-button">Show All</button>
   
 
-<input type="text" style="width: 85%;" v-model="searchTerm" placeholder="Search by name" class="search-input" />
+<input type="text" style="width: 100%;" v-model="searchTerm" placeholder="Search by name" class="search-input" />
  
       <h2 style="margin-left:5rem;">Popular Products</h2>
     <ul class="product-list">
