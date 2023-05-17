@@ -1,6 +1,6 @@
 <template>
-  <div class="content">
-    <h2 >Popular Products</h2>
+
+    <h2 style="margin-left:5rem;">Popular Products</h2>
     <div class="category-search-box">
       <div class="category-box">
         <button @click="filterByCategory('Burgers Meals')" class="category-button">Burgers</button>
@@ -22,7 +22,7 @@
         </div>
       </li>
     </ul>
-  </div>
+
 </template>
 
 

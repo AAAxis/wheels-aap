@@ -2,7 +2,7 @@
 
   <div>
  
-    <h2 style="margin-left:7rem;" >Favorites near you</h2>
+    <h2 style="margin-left:5rem;" >Favorites near you</h2>
     <div class="swiper-container">
     
       <div class="swiper-wrapper">
