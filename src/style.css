@@ -159,15 +159,10 @@ body {
 }
 
 
-/* Set a max-width for the container to prevent it from stretching too wide */
-.product-list {
-  max-width: 1200px;
-  margin: 0 auto;
-}
 
 /* Set a width for the product boxes and add some spacing between them */
 .product-box {
-  width: 48%;
+  width: 38%;
   margin-bottom: 2%;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -206,12 +201,6 @@ body {
 }
 
 
-
-
-
-.content {
-  text-align: center;
-}
 
 .header {
   font-size: 24px;
