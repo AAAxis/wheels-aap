@@ -4,12 +4,15 @@ dependencies:
   axios:
     specifier: ^1.4.0
     version: 1.4.0
+  swiper:
+    specifier: ^9.3.2
+    version: 9.3.2
   vue:
     specifier: ^3.2.45
     version: 3.2.45
   vue-awesome-swiper:
     specifier: ^5.0.1
-    version: 5.0.1(swiper@8.4.7)(vue@3.2.45)
+    version: 5.0.1(swiper@9.3.2)(vue@3.2.45)
   vue-router:
     specifier: ^4.2.0
     version: 4.2.0(vue@3.2.45)
@@ -377,12 +380,6 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: false
 
-  /dom7@4.0.6:
-    resolution: {integrity: sha512-emjdpPLhpNubapLFdjNL9tP06Sr+GZkrIHEXLWvOGsytACUrkbeIdjO5g77m00BrHTznnlcNqgmn7pCN192TBA==}
-    dependencies:
-      ssr-window: 4.0.2
-    dev: false
-
   /esbuild@0.16.17:
     resolution: {integrity: sha512-G8LEkV0XzDMNwXKgM0Jwu3nY3lSTwSGY6XbxM9cr9+s0T/qSV1q1JVPBGzm3dcjhCic9+emZDmMffkwgPeOeLg==}
     engines: {node: '>=12'}
@@ -539,12 +536,10 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /swiper@8.4.7:
-    resolution: {integrity: sha512-VwO/KU3i9IV2Sf+W2NqyzwWob4yX9Qdedq6vBtS0rFqJ6Fa5iLUJwxQkuD4I38w0WDJwmFl8ojkdcRFPHWD+2g==}
+  /swiper@9.3.2:
+    resolution: {integrity: sha512-Kj9Z4kXRmJR3YT/Wj+XLWj8P6IcRt+WG38uL8M3/Wny7+6sV0TlP9vnE1X+Co9c7VzNooojWGnFa+Wf/9+CUMA==}
     engines: {node: '>= 4.7.0'}
-    requiresBuild: true
     dependencies:
-      dom7: 4.0.6
       ssr-window: 4.0.2
     dev: false
 
@@ -585,13 +580,13 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vue-awesome-swiper@5.0.1(swiper@8.4.7)(vue@3.2.45):
+  /vue-awesome-swiper@5.0.1(swiper@9.3.2)(vue@3.2.45):
     resolution: {integrity: sha512-mWjFJzUqA4lG+DmsmibvMpoiBnl+IH2SSeiiQ3i5M0t1y9FknTxnGT0DsMb2YdJLgjYMEK3sYOWzqgLnZMH8Lg==}
     peerDependencies:
       swiper: ^7.0.0  || ^8.0.0
       vue: 3.x
     dependencies:
-      swiper: 8.4.7
+      swiper: 9.3.2
       vue: 3.2.45
     dev: false
 
