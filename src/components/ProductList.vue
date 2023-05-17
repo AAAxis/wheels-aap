@@ -4,14 +4,14 @@
 
  
  
-      <button @click="filterByCategory('Burgers Meals')" class="category-button">Burgers</button>
+      <button @click="filterByCategory('Burgers Meals')" class="category-button">Burgers Meal</button>
         <button @click="filterByCategory('Breakfast')" class="category-button">Breakfast</button>
-        <button @click="filterByCategory('Drinks')" class="category-button">Drinks</button>
+        <button @click="filterByCategory('Drinks')" class="category-button">Hot Drinks</button>
         <button @click="filterByCategory('Wraps')" class="category-button">Wraps</button>
-        <button @click="clearFilters" class="display-all-button">All</button>
+        <button @click="clearFilters" class="display-all-button">Show All</button>
   
 
-<input type="text" style="width: 100%;" v-model="searchTerm" placeholder="Search by name" class="search-input" />
+<input type="text" style="width: 90%;" v-model="searchTerm" placeholder="Search by name" class="search-input" />
  
       <h2 style="margin-left:5rem;">Popular Products</h2>
     <ul class="product-list">
