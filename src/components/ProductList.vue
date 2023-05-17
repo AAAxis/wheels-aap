@@ -1,21 +1,32 @@
 <template>
-  <div>
-    <h1>Products</h1>
-    <div>
-      <input type="text" v-model="searchTerm" placeholder="Search by name" />
-      <button @click="filterByCategory('Burgers Meals')">Burgers Meals</button>
-      <button @click="filterByCategory('Breakfast')">Breakfast</button>
-      <button @click="filterByCategory('Drinks')">Drinks</button>
-      <button @click="filterByCategory('Wraps')">Wraps</button>
-      <button @click="clearFilters">Display All</button>
+  <div class="content">
+    <h1 class="header">Popular Products</h1>
+    <div class="category-search-box">
+      <div class="category-box">
+        <button @click="filterByCategory('Burgers Meals')" class="category-button">Burgers</button>
+        <button @click="filterByCategory('Breakfast')" class="category-button">Breakfast</button>
+        <button @click="filterByCategory('Drinks')" class="category-button">Drinks</button>
+        <button @click="filterByCategory('Wraps')" class="category-button">Wraps</button>
+        <button @click="clearFilters" class="display-all-button">All</button>
+      </div>
+      <div class="search-box">
+        <input type="text" v-model="searchTerm" placeholder="Search by name" class="search-input" />
+      </div>
     </div>
-    <ul>
-      <li v-for="product in filteredProducts" :key="product.id">
-        {{ product.name }} - {{ product.price }}
+    <ul class="product-list">
+      <li v-for="product in filteredProducts" :key="product.id" class="product-box" style="display:flex; align-items:center; width:90%; margin:20px;">
+        <img :src="getImageUrl(product.image)" :alt="product.name" class="product-image" style="width:40%; margin-right:20px;">
+        <div style="width:60%;">
+          <h3 class="product-name">{{ product.name }} - ${{ product.price }}</h3>
+          <button class="product-button">Add to cart</button>
+        </div>
       </li>
     </ul>
   </div>
 </template>
+
+
+
 
 <script>
 import axios from 'axios';
@@ -48,6 +59,9 @@ export default {
     clearFilters() {
       this.selectedCategory = null;
       this.searchTerm = '';
+    },
+    getImageUrl(image) {
+      return `https://polskoydm.pythonanywhere.com/static/uploads/${image}`;
     }
   },
   computed: {
