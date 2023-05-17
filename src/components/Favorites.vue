@@ -1,7 +1,10 @@
 <template>
+
   <div>
-    <h1>Favourites Near You</h1>
+ 
+    <h1 style="margin-left:7rem;" >Favorites near you</h1>
     <div class="swiper-container">
+    
       <div class="swiper-wrapper">
         <div v-for="branch in branches" :key="branch.id" class="swiper-slide">
           <div class="gallery-cell">
@@ -19,6 +22,7 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -56,15 +60,16 @@ export default {
       return `https://polskoydm.pythonanywhere.com/static/uploads/${image}`;
     },
     initializeSwiper() {
-      this.swiper = new Swiper('.swiper-container', {
-        slidesPerView: 'auto',
-        spaceBetween: 10,
-        navigation: {
-          nextEl: null,
-          prevEl: null
-        }
-      });
+  this.swiper = new Swiper('.swiper-container', {
+    slidesPerView: 2,
+    spaceBetween: 15,
+    loop: true, // Enable looping
+    navigation: {
+      nextEl: null,
+      prevEl: null
     }
+  });
+}
   }
 };
 </script>

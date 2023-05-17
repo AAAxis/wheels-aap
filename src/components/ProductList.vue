@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <h1 class="header">Popular Products</h1>
+    <h1 >Popular Products</h1>
     <div class="category-search-box">
       <div class="category-box">
         <button @click="filterByCategory('Burgers Meals')" class="category-button">Burgers</button>
