@@ -2,7 +2,7 @@
 
   <div>
  
-    <h1 style="margin-left:7rem;" >Favorites near you</h1>
+    <h2 style="margin-left:7rem;" >Favorites near you</h2>
     <div class="swiper-container">
     
       <div class="swiper-wrapper">
@@ -61,8 +61,8 @@ export default {
     },
     initializeSwiper() {
   this.swiper = new Swiper('.swiper-container', {
-    slidesPerView: 2,
-    spaceBetween: 15,
+    slidesPerView: 1,
+    spaceBetween: 10,
     loop: true, // Enable looping
     navigation: {
       nextEl: null,
