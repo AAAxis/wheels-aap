@@ -15,7 +15,7 @@
  
       <h2 style="margin-left:5rem;">Popular Products</h2>
     <ul class="product-list">
-      <li v-for="product in filteredProducts" :key="product.id" class="product-box" style="display:flex; align-items:center; width:90%; margin:5px;">
+      <li v-for="product in filteredProducts" :key="product.id" class="product-box" style="display:flex; align-items:center; width:80%; margin:5px;">
         <img :src="getImageUrl(product.image)" :alt="product.name" class="product-image" style="width:40%; margin-right:20px;">
         <div style="width:60%;">
           <h3 class="product-name">{{ product.name }} - ${{ product.price }}</h3>
