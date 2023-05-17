@@ -10,7 +10,7 @@
         <button @click="clearFilters" class="display-all-button">All</button>
       </div>
       <div class="search-box">
-        <input type="text" v-model="searchTerm" placeholder="Search by name" class="search-input" />
+        <input type="text" :width="90" v-model="searchTerm" placeholder="Search by name" class="search-input" />
       </div>
     </div>
     <ul class="product-list">
