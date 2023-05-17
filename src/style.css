@@ -70,7 +70,7 @@
 			display: flex;
 			justify-content: space-evenly;
 			align-items: center;
-			font-size: 24px;
+			font-size: 20px;
 
 		}
 
@@ -80,7 +80,7 @@
 			align-items: center;
 			color: #fff;
 			text-decoration: none;
-			margin: 10px 20px;
+			margin: 5px 20px;
 		}
 
 		.footer-button:hover {
@@ -88,12 +88,12 @@
 		}
 
 		.footer-button-icon {
-			font-size: 32px;
-			margin-bottom: 15px;
+			font-size: 30px;
+			margin-bottom: 12px;
 		}
 
 		.footer-button-label {
-			font-size: 12px;
+			font-size: 10px;
 			text-align: center;
 		}
 
