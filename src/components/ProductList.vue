@@ -2,7 +2,7 @@
 
 
 
-    <div class="topnav">
+ 
  
       <button @click="filterByCategory('Burgers Meals')" class="category-button">Burgers</button>
         <button @click="filterByCategory('Breakfast')" class="category-button">Breakfast</button>
@@ -10,8 +10,6 @@
         <button @click="filterByCategory('Wraps')" class="category-button">Wraps</button>
         <button @click="clearFilters" class="display-all-button">All</button>
   
-</div>
-
 
 <input type="text" style="width: 100%;" v-model="searchTerm" placeholder="Search by name" class="search-input" />
  
