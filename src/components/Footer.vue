@@ -7,17 +7,16 @@
           <i class="fa-solid fa-house fa-lg"></i>
           <span class="footer-button-label">Home</span>
         </a>
-        <a href="/user_login" class="footer-button">
+        <a onclick="document.getElementById('id01').style.display='block'" class="footer-button">
           <i class="fa-solid fa-calendar fa-lg"></i>
           <span class="footer-button-label">Saved</span>
         </a>
-   
-          <a href="/shopping_cart" class="footer-button">
-  <i class="fa-solid fa-cart-shopping fa-lg"></i>
-  <span class="footer-button-label">Cart</span>
-  <span class="cart-counter">{{ cartItems.length }}</span>
-</a>
-        <a href="/user_login" class="footer-button">
+        <a onclick="document.getElementById('id01').style.display='block'" class="footer-button">
+          <i class="fa-solid fa-cart-shopping fa-lg"></i>
+          <span class="footer-button-label">Cart</span>
+          <span class="cart-counter">{{ cartItems.length }}</span>
+        </a>
+        <a onclick="openNav()" class="footer-button">
           <i class="fa-solid fa-user fa-lg"></i>
           <span class="footer-button-label">Profile</span>
         </a>
@@ -32,6 +31,6 @@ export default {
       type: Array,
       required: true
     }
-  }
+  },
 };
 </script>

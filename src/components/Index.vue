@@ -59,7 +59,7 @@
         </ul>
       </div>
     </div>
-
+<br><br><br><br><br>
     <Footer :cartItems="cartItems" />
   </template>
 
