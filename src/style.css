@@ -437,3 +437,19 @@ p {
 .topnav button.icon {
   display: none;
 }
+
+
+.footer-button {
+  position: relative;
+}
+
+.cart-counter {
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  background-color: yellow;
+  color: black;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-size: 12px;
+}
