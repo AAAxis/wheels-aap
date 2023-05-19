@@ -89,11 +89,21 @@ import 'swiper/swiper-bundle.css';
 export default {
 
     created() {
-  const email = this.$cookies.get('email');
+ 
+      const urlParams = new URLSearchParams(window.location.search);
+      const email = urlParams.get('email');
+      const image = urlParams.get('image');
+      const username = urlParams.get('username');
 
-  if (email) {
-    this.$router.push('/dashboard');
-  }
+if (email && image && username) {
+  // Set the cookies
+  setCookie('email', email);
+  setCookie('image', image);
+  setCookie('username', username);
+  
+  // Redirect to '/dashboard'
+  this.$router.push('/dashboard');
+}
 
   },
     props: {
