@@ -34,7 +34,7 @@
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" @click="closeNav">&times;</a>
       <a href="#"><img :src="userInfo.image" style="height:100px" alt="Profile"></a>
-      <a href="#">{{ userInfo.email }}</a>
+      <a href="#">{{ userInfo.username }}</a>
       <hr style="color:grey; margin-left:2rem; margin-right:2rem;">
       <a href="https://polskoydm.pythonanywhere.com/user_register" v-if="userInfo">Join Us</a>
       <a href="https://polskoydm.pythonanywhere.com/user_login" v-if="userInfo">Messages</a>
@@ -72,13 +72,21 @@ export default {
     }
   },
   created() {
-    // Retrieve the email parameter from the URL
+    // Retrieve the email and image parameters from the URL
     const urlParams = new URLSearchParams(window.location.search);
     const email = urlParams.get('email');
-    
-    // Update the userInfo object with the email value
+    const image = urlParams.get('image');
+    const username = urlParams.get('username');
+
+    // Update the userInfo object with the email and image values
     if (email) {
       this.userInfo.email = email;
+    }
+    if (image) {
+      this.userInfo.image = image;
+    }
+    if (username) {
+      this.userInfo.username = username;
     }
   }
 };
