@@ -167,10 +167,13 @@ export default {
       console.log('Product added to cart:', product);
     }
   },
+ 
+
   created() {
-  const email = this.$route.query.email;
-  const image = this.$route.query.image;
-  const username = this.$route.query.username;
+  const params = new URLSearchParams(this.$route.fullPath);
+  const email = params.get('email');
+  const image = params.get('image');
+  const username = params.get('username');
 
   if (email && image && username) {
     setCookie('email', email, 7); // Set the 'email' cookie with the provided value for 7 days
