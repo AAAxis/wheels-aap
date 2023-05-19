@@ -9,9 +9,10 @@
   },
   "dependencies": {
     "axios": "^1.4.0",
-    "swiper": "^9.3.2",
+    "swiper": "^8.4.7",
     "vue": "^3.2.45",
     "vue-awesome-swiper": "^5.0.1",
+    "vue-cookie": "^1.1.4",
     "vue-cookies": "^1.8.3",
     "vue-router": "^4.2.0",
     "vue-touch-events": "^1.0.3"

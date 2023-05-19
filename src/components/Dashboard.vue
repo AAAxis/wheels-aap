@@ -65,12 +65,11 @@
   </template>
 
 <script>
-
+import { setCookie } from 'vue-cookie';
 import Navbar from './Navbar.vue'; 
 import axios from 'axios';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
-
 
 
 export default {
@@ -169,17 +168,17 @@ export default {
     }
   },
   created() {
-    const email = this.$route.query.email;
-    const image = this.$route.query.image;
-    const username = this.$route.query.username;
+  const email = this.$route.query.email;
+  const image = this.$route.query.image;
+  const username = this.$route.query.username;
 
-    if (email && image && username) {
-      document.cookie = `email=${encodeURIComponent(email)}; path=/`;
-      document.cookie = `image=${encodeURIComponent(image)}; path=/`;
-      document.cookie = `username=${encodeURIComponent(username)}; path=/`;
+  if (email && image && username) {
+    setCookie('email', email, 7); // Set the 'email' cookie with the provided value for 7 days
+    setCookie('image', image, 7); // Set the 'image' cookie with the provided value for 7 days
+    setCookie('username', username, 7); // Set the 'username' cookie with the provided value for 7 days
+  }
+},
 
-    }
-  },
   computed: {
     filteredProducts() {
       let filtered = this.products;
