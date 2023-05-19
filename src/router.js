@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Index from './components/Index.vue';
 import Dashboard from './components/Dashboard.vue';
-import Dashboard from './components/SetCookie.vue';
+import SetCookie from './components/SetCookie.vue';
 
 
 const routes = [
