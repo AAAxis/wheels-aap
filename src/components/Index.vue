@@ -14,10 +14,10 @@
   
       <div>
         <div class="topnav" id="myTopnav">
-          <button @click="filterByCategory('Burgers Meals')" class="category-button">Burgers</button>
-          <button @click="filterByCategory('Breakfast')" class="category-button">Breakfast</button>
-          <button @click="filterByCategory('Drinks')" class="category-button">Drinks</button>
-          <button @click="filterByCategory('Wraps')" class="category-button">Wraps</button>
+          <button @click="filterByCategory('burgers')" class="category-button">Burgers</button>
+          <button @click="filterByCategory('breakfast')" class="category-button">Breakfast</button>
+          <button @click="filterByCategory('drinks')" class="category-button">Drinks</button>
+          <button @click="filterByCategory('wraps')" class="category-button">Wraps</button>
           <button @click="clearFilters" class="display-all-button">Show All</button>
         </div>
     
@@ -169,7 +169,7 @@ export default {
       let filtered = this.products;
 
       if (this.selectedCategory) {
-        filtered = filtered.filter(product => product.category === this.selectedCategory);
+        filtered = filtered.filter(product => product.category == this.selectedCategory);
       }
 
       if (this.searchTerm) {
