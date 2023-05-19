@@ -32,17 +32,18 @@
   </div>
   <div>
     <div id="mySidenav" class="sidenav">
-      <a href="javascript:void(0)" class="closebtn" @click="closeNav">&times;</a>
-      <a href="#"><img :src="getUserImage()" style="height:100px" alt="Profile"></a>
-      <a href="#">{{ getUserName() }}</a>
+      <!-- Sidebar content -->
+      <a href="#"><img :src="userImage" style="height:100px" alt="Profile"></a>
+      <a href="#">{{ userName }}</a>
       <hr style="color:grey; margin-left:2rem; margin-right:2rem;">
-      <a href="https://polskoydm.pythonanywhere.com/user_register" v-if="userInfo">Join Us</a>
-      <a href="https://polskoydm.pythonanywhere.com/user_login" v-if="userInfo">Messages</a>
+      <a href="https://polskoydm.pythonanywhere.com/user_register" v-if="!getCookie('email')">Join Us</a>
+      <a href="https://polskoydm.pythonanywhere.com/user_login" v-if="!getCookie('email')">Messages</a>
       <a href="https://www.wheels.works/about">About</a>
-      <a @click="logout" v-if="!userInfo">Logout</a>
+      <a @click="logout" v-if="!getCookie('email')">Logout</a>
     </div>
   </div>
 </template>
+
 <script>
 export default {
   props: {
@@ -51,53 +52,34 @@ export default {
       required: true
     },
   },
-
- 
-    
-    // Other methods
-    methods: {
-      openNav() {
-        document.getElementById("mySidenav").style.width = "100%";
-      },
-      closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-      },
-      logout() {
-        // Implement logout functionality
-      }
-    },
-    created() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const email = urlParams.get('email');
-  const image = urlParams.get('image');
-  const username = urlParams.get('username');
-
-  // Set the email, image, and username cookies
-  this.setCookie('email', email);
-  this.setCookie('image', image);
-  this.setCookie('username', username);
-
-  // Update the userInfo object with the email, image, and username values
-  if (email) {
-    this.userInfo.email = email;
-  }
-  if (image) {
-    this.userInfo.image = image;
-  }
-  if (username) {
-    this.userInfo.username = username;
-  }
-},
-methods: {
-  setCookie(name, value) {
-    const cookie = `${name}=${value}`;
-    document.cookie = cookie;
+  data() {
+    return {
+      userImage: "",
+      userName: ""
+    };
   },
-  getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+  methods: {
+    // Other methods
+    
+    setUserData() {
+      const email = this.getCookie('email');
+      const image = this.getCookie('image');
+      const username = this.getCookie('username');
+      
+      this.userImage = image ? image : "https://example.com/fake-image.jpg";
+      this.userName = username ? username : "Anonim User";
+    },
+
+    openNav() {
+      document.getElementById("mySidenav").style.width = "100%";
+    },
+    closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    },
+ 
+  },
+  created() {
+    this.setUserData();
   }
-}
-  };
-  </script>
+};
+</script>
