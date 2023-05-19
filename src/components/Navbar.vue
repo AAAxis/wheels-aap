@@ -36,8 +36,8 @@
     <div id="mySidenav" class="sidenav">
       <!-- Sidebar content -->
       <a href="javascript:void(0)" class="closebtn" @click="closeNav">&times;</a>
-      <a href="#"><img :src="userImage" style="height:100px" alt="Profile"></a>
-      <a href="#">{{ userName }}</a>
+      <a href="#"><img :src="userImage ? userImage : 'https://marketplace.canva.com/EAFEits4-uw/1/0/800w/canva-boy-cartoon-gamer-animated-twitch-profile-photo-r0bPCSjUqg0.jpg'" style="height:100px" alt="Profile"></a>
+      <a href="#">{{ userName ? userName : 'Anonim User' }}</a>
       <hr style="color:grey; margin-left:2rem; margin-right:2rem;">
       <a href="https://polskoydm.pythonanywhere.com/user_register" v-if="getCookie('email')">Join Us</a>
       <a href="https://polskoydm.pythonanywhere.com/user_login" v-if="!getCookie('email')">Messages</a>
@@ -57,8 +57,8 @@ export default {
   },
   data() {
     return {
-      userImage: "",
-      userName: ""
+      userImage: null,
+      userName: "Anonim User"
     };
   },
   methods: {
@@ -94,8 +94,8 @@ export default {
       const image = this.getCookie('image');
       const username = this.getCookie('username');
       
-      this.userImage = email ? image : "https://example.com/fake-image.jpg";
-      this.userName = email ? username : "Anonim User";
+      this.userImage = email ? image : null;
+      this.userName = email ? username : this.userName;
     },
 
     openNav() {
