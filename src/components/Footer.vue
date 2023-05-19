@@ -13,7 +13,6 @@
       <a href="https://polskoydm.pythonanywhere.com/user_login" class="footer-button">
         <i class="fa-solid fa-cart-shopping fa-lg"></i>
         <span class="footer-button-label">Cart</span>
-        <span class="cart-counter">{{ cartItems.length }}</span>
       </a>
       <a href="https://polskoydm.pythonanywhere.com/user_login" class="footer-button">
         <i class="fa-solid fa-user fa-lg"></i>
@@ -24,14 +23,5 @@
   
 
 </template>
-<script>
-export default {
- props: {
-    cartItems: {
-      type: Array,
-      required: true
-    },
-}
-};
 
-</script>
+
