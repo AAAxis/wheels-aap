@@ -46,7 +46,7 @@
             <div style="width:60%;">
               <h3 class="product-name">{{ product.name }} - ${{ product.price }}</h3>
               <button class="product-button">
-  <a href="https://polskoydm.pythonanywhere.com/user_login">Add to cart</a>
+  <a style="text-decoration: none;" href="https://polskoydm.pythonanywhere.com/user_login">Add to cart</a>
 </button>
             </div>
           </li>
