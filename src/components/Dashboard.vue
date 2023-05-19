@@ -61,12 +61,12 @@
     </div>
 <br><br><br><br><br>
 
-    <Footer :cartItems="cartItems" />
+    <Navbar :cartItems="cartItems" />
   </template>
 
 <script>
 
-import Footer from './Footer.vue'; 
+import Navbar from './Navbar.vue'; 
 import axios from 'axios';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
@@ -75,7 +75,7 @@ import 'swiper/swiper-bundle.css';
 
 export default {
         components: {
-        Footer
+        Navbar
     },
     props: {
     cartItems: {
