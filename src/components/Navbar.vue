@@ -35,6 +35,7 @@
   <div>
     <div id="mySidenav" class="sidenav">
       <!-- Sidebar content -->
+      <a href="javascript:void(0)" class="closebtn" @click="closeNav">&times;</a>
       <a href="#"><img :src="userImage" style="height:100px" alt="Profile"></a>
       <a href="#">{{ userName }}</a>
       <hr style="color:grey; margin-left:2rem; margin-right:2rem;">
