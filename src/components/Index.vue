@@ -1,15 +1,7 @@
 <template>
     <div>
 
-        <div class="cart-summary">
-      <h3>Cart Summary</h3>
-      <p>Total Items: {{ cartItems.length }}</p>
-      <ul>
-        <li v-for="item in cartItems" :key="item.id">
-          {{ item.name }} - ${{ item.price }} (Quantity: {{ item.quantity }})
-        </li>
-      </ul>
-    </div>
+   
 
   
       <div>
