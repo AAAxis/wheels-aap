@@ -45,7 +45,9 @@
             <img :src="getImageUrl(product.image)" :alt="product.name" class="product-image" style="width:40%; margin-right:20px;">
             <div style="width:60%;">
               <h3 class="product-name">{{ product.name }} - ${{ product.price }}</h3>
-              <button @click="addToCart(product)" class="product-button">Add to cart</button>
+              <button class="product-button">
+  <a href="https://polskoydm.pythonanywhere.com/user_login">Add to cart</a>
+</button>
             </div>
           </li>
         </ul>
@@ -53,21 +55,39 @@
     </div>
 <br><br><br><br><br>
 
-    <Footer :cartItems="cartItems" ></Footer>
+
+    <div class="footer">
+    <div class="footer-buttons">
+      <a href="/" class="footer-button">
+        <i class="fa-solid fa-house fa-lg"></i>
+        <span class="footer-button-label">Home</span>
+      </a>
+   
+      <a href="https://polskoydm.pythonanywhere.com/user_login" class="footer-button">
+        <i class="fa-solid fa-calendar fa-lg"></i>
+        <span class="footer-button-label">Saved</span>
+      </a>
+      <a href="https://polskoydm.pythonanywhere.com/user_login" class="footer-button">
+        <i class="fa-solid fa-cart-shopping fa-lg"></i>
+        <span class="footer-button-label">Cart</span>
+      </a>
+      <a href="https://polskoydm.pythonanywhere.com/user_login" class="footer-button">
+        <i class="fa-solid fa-user fa-lg"></i>
+        <span class="footer-button-label">Profile</span>
+      </a>
+    </div>
+  </div>
+  
   </template>
 
 <script>
-import Footer from './Footer.vue'; 
+
 import axios from 'axios';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 
-
-
 export default {
-        components: {
-        Footer
-    },
+
     created() {
   const email = this.$cookies.get('email');
 
@@ -90,7 +110,6 @@ export default {
       selectedCategory: null,
       searchTerm: '',
       swiper: null,
-      cartItems: []
     };
   },
 
@@ -143,24 +162,7 @@ export default {
       });
     },
 
-    addToCart(product) {
-      const existingProduct = this.cartItems.find(item => item.id === product.id);
-
-      if (existingProduct) {
-        existingProduct.quantity++;
-      } else {
-        const cartItem = {
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          quantity: 1
-        };
-
-        this.cartItems.push(cartItem);
-      }
-
-      console.log('Product added to cart:', product);
-    }
+     
   },
 
   computed: {
