@@ -16,15 +16,15 @@ dependencies:
   vue-cookie:
     specifier: ^1.1.4
     version: 1.1.4
-  vue-cookies:
-    specifier: ^1.8.3
-    version: 1.8.3
   vue-router:
     specifier: ^4.2.0
     version: 4.2.0(vue@3.2.45)
   vue-touch-events:
     specifier: ^1.0.3
     version: 1.0.3
+  vue3-cookies:
+    specifier: ^1.0.6
+    version: 1.0.6
 
 devDependencies:
   '@vitejs/plugin-vue':
@@ -519,8 +519,8 @@ packages:
       supports-preserve-symlinks-flag: 1.0.0
     dev: true
 
-  /rollup@3.21.8:
-    resolution: {integrity: sha512-SSFV2T2fWtQ/vvBip85u2Nr0GNKireabH9d7nXswBg+XSH+jbVDSYptRAEbCEsquhs503rpPA9POYAp0/Jhasw==}
+  /rollup@3.22.0:
+    resolution: {integrity: sha512-imsigcWor5Y/dC0rz2q0bBt9PabcL3TORry2hAa6O6BuMvY71bqHyfReAz5qyAqiQATD1m70qdntqBfBQjVWpQ==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -593,7 +593,7 @@ packages:
       esbuild: 0.16.17
       postcss: 8.4.23
       resolve: 1.22.2
-      rollup: 3.21.8
+      rollup: 3.22.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -614,10 +614,6 @@ packages:
       tiny-cookie: 1.0.1
     dev: false
 
-  /vue-cookies@1.8.3:
-    resolution: {integrity: sha512-VBRsyRMVdahBgFfh389TMHPmDdr4URDJNMk4FKSCfuNITs7+jitBDhwyL4RJd3WUsfOYNNjPAkfbehyH9AFuoA==}
-    dev: false
-
   /vue-router@4.2.0(vue@3.2.45):
     resolution: {integrity: sha512-c+usESa6ZoWsm4PPdzRSyenp5A4dsUtnDJnrI03fY1IpIihA9TK3x5ffgkFDpjhLJZewsXoKURapNLFdZjuqTg==}
     peerDependencies:
@@ -631,6 +627,12 @@ packages:
     resolution: {integrity: sha512-zSl5uMwGt4Vcah7z9dX6F7r/SgCkKDBdMJ4cgY2s7I3xlXX+kYoo+j4HaVyV+QPOis6Km88K1ug3T9xLxB+0cA==}
     dependencies:
       vue: 2.7.14
+    dev: false
+
+  /vue3-cookies@1.0.6:
+    resolution: {integrity: sha512-a1UvVD0qIgxyOqjlSOwnLnqAnz8ASltugEv8yX+96i/WGZAN9fEDci7xO4HIWZE1uToUnRq9JnFhvfDCSo45OA==}
+    dependencies:
+      vue: 3.2.45
     dev: false
 
   /vue@2.7.14:
