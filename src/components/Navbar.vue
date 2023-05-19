@@ -48,15 +48,9 @@
 </template>
 
 <script>
-import { getCookie } from 'vue-cookies';
-export default {
-  created() {
-    const email = getCookie('email');
 
-    if (email) {
-      this.$router.push('/dashboard');
-    }
-  },
+export default {
+
   props: {
     cartItems: {
       type: Array,

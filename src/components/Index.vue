@@ -61,11 +61,11 @@
     </div>
 <br><br><br><br><br>
 
-    <Footer :cartItems="cartItems" />
+    <Footer :cartItems="cartItems" ></Footer>
   </template>
 
 <script>
-
+import { getCookie } from 'vue-cookies';
 import Footer from './Footer.vue'; 
 import axios from 'axios';
 import Swiper from 'swiper';
@@ -77,6 +77,14 @@ export default {
         components: {
         Footer
     },
+    created() {
+  const email = this.$cookies.get('email');
+
+  if (email) {
+    this.$router.push('/dashboard');
+  }
+
+  },
     props: {
     cartItems: {
       type: Array,

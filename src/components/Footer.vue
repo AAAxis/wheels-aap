@@ -24,3 +24,14 @@
   
 
 </template>
+<script>
+export default {
+ props: {
+    cartItems: {
+      type: Array,
+      required: true
+    },
+}
+};
+
+</script>
