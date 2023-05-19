@@ -74,9 +74,14 @@ import 'swiper/swiper-bundle.css';
 
 
 export default {
+
+  
         components: {
         Navbar
     },
+
+
+   
     props: {
     cartItems: {
       type: Array,
@@ -163,7 +168,18 @@ export default {
       console.log('Product added to cart:', product);
     }
   },
+  created() {
+    const email = this.$route.query.email;
+    const image = this.$route.query.image;
+    const username = this.$route.query.username;
 
+    if (email && image && username) {
+      document.cookie = `email=${encodeURIComponent(email)}; path=/`;
+      document.cookie = `image=${encodeURIComponent(image)}; path=/`;
+      document.cookie = `username=${encodeURIComponent(username)}; path=/`;
+
+    }
+  },
   computed: {
     filteredProducts() {
       let filtered = this.products;
@@ -182,5 +198,7 @@ export default {
       return filtered;
     }
   }
+
+
 };
 </script>
