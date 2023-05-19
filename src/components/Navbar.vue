@@ -36,13 +36,13 @@
     <div id="mySidenav" class="sidenav">
       <!-- Sidebar content -->
       <a href="javascript:void(0)" class="closebtn" @click="closeNav">&times;</a>
-      <a href="#"><img :src="userImage" style="height:100px" alt="Profile"></a>
+      <a href="#"><img :src="userImage" style="height:100px" alt="Image"></a>
       <a href="#">{{ userName }}</a>
       <hr style="color:grey; margin-left:2rem; margin-right:2rem;">
-      <a href="https://polskoydm.pythonanywhere.com/user_register" v-if="getCookie('email')">Join Us</a>
-      <a href="https://polskoydm.pythonanywhere.com/user_login" v-if="!getCookie('email')">Messages</a>
-      <a href="https://www.wheels.works/about" v-if="getCookie('email')">About</a>
-      <a @click="logout" v-if="!getCookie('email')">Logout</a>
+      <a href="https://polskoydm.pythonanywhere.com/user_register">Join Us</a>
+      <a href="https://polskoydm.pythonanywhere.com/user_login" >Messages</a>
+      <a href="https://www.wheels.works/about" >About</a>
+      <a @click="logout">Logout</a>
     </div>
   </div>
 </template>
@@ -61,59 +61,45 @@ export default {
     return {
       userImage: "",
       userName: "",
-      userName: ""
+      userEmail: ""
     };
   },
   methods: {
-    // Other methods
-    
-    setCookie(name, value, days) {
-      const date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      const expires = "expires=" + date.toUTCString();
-      document.cookie = name + "=" + value + ";" + expires + ";path=/";
-    },
-
-    getCookie(name) {
-      const cookieName = name + "=";
-      const decodedCookie = decodeURIComponent(document.cookie);
-      const cookieArray = decodedCookie.split(';');
-      
-      for (let i = 0; i < cookieArray.length; i++) {
-        let cookie = cookieArray[i];
-        while (cookie.charAt(0) === ' ') {
-          cookie = cookie.substring(1);
-        }
-        if (cookie.indexOf(cookieName) === 0) {
-          return cookie.substring(cookieName.length, cookie.length);
-        }
-      }
-      
-      return "";
-    },
-
-    setUserData() {
-      const email = this.getCookie('email');
-      const image = this.getCookie('image');
-      const username = this.getCookie('username');
-      
-      this.userEmail = email;
-      this.userImage = image;
-      this.userName = username;
-    },
-
-    openNav() {
-      document.getElementById("mySidenav").style.width = "100%";
-    },
-    closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-    },
-    logout() {
-      // Implement logout functionality
-    }
+  // Other methods
+  
+  openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
   },
+  closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  },
+  logout() {
+    // Implement logout functionality
+  },
+  getCookie(name) {
+    const cookieString = document.cookie;
+    const cookies = cookieString.split(';');
+
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(name + '=')) {
+        return decodeURIComponent(cookie.substring(name.length + 1));
+      }
+    }
+
+    return null;
+  },
+  setUserData() {
+    this.userEmail = this.getCookie('email');
+    this.userImage = this.getCookie('image');
+    this.userName = this.getCookie('username');
+  }
+},
   created() {
     this.setUserData();
   }
+
+   
+
 };
 </script>
