@@ -65,7 +65,6 @@
   </template>
 
 <script>
-import { setCookie } from 'vue-cookie';
 import Navbar from './Navbar.vue'; 
 import axios from 'axios';
 import Swiper from 'swiper';
@@ -168,19 +167,6 @@ export default {
     }
   },
  
-
-  created() {
-  const params = new URLSearchParams(this.$route.fullPath);
-  const email = params.get('email');
-  const image = params.get('image');
-  const username = params.get('username');
-
-  if (email && image && username) {
-    setCookie('email', email, 7); // Set the 'email' cookie with the provided value for 7 days
-    setCookie('image', image, 7); // Set the 'image' cookie with the provided value for 7 days
-    setCookie('username', username, 7); // Set the 'username' cookie with the provided value for 7 days
-  }
-},
 
   computed: {
     filteredProducts() {

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Index from './components/Index.vue';
 import Dashboard from './components/Dashboard.vue';
+import Dashboard from './components/SetCookie.vue';
 
 
 const routes = [
@@ -10,11 +11,16 @@ const routes = [
     component: Index,
   },
   {
-    path: '/',
+    path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
   },
 
+  {
+    path: '/setcookie',
+    name: 'SetCookie',
+    component: SetCookie,
+  },
 
 ];
 
