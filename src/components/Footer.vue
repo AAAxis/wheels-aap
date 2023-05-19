@@ -7,11 +7,11 @@
           <i class="fa-solid fa-house fa-lg"></i>
           <span class="footer-button-label">Home</span>
         </a>
-        <a onclick="document.getElementById('id01').style.display='block'" class="footer-button">
+        <a href="https://polskoydm.pythonanywhere.com/user_register" class="footer-button">
           <i class="fa-solid fa-calendar fa-lg"></i>
           <span class="footer-button-label">Saved</span>
         </a>
-        <a onclick="document.getElementById('id01').style.display='block'" class="footer-button">
+        <a href="https://polskoydm.pythonanywhere.com/user_register" class="footer-button">
           <i class="fa-solid fa-cart-shopping fa-lg"></i>
           <span class="footer-button-label">Cart</span>
           <span class="cart-counter">{{ cartItems.length }}</span>

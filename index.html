@@ -19,40 +19,13 @@
      <a href="#">Anonim User</a>
      <hr style="color:grey; margin-left:2rem; margin-right:2rem;">
       <a href="https://polskoydm.pythonanywhere.com/user_register">Register</a>
-      <a onclick="closeNav(),document.getElementById('id01').style.display='block'" >Login</a>
-      <a onclick="closeNav(),document.getElementById('id01').style.display='block'" >Messages</a>
+      <a href="https://polskoydm.pythonanywhere.com/user_login" >Login</a>
+      <a href="https://polskoydm.pythonanywhere.com/user_login" >Messages</a>
       <a href="https://www.wheels.works/about">About</a>
  
     </div>
-
-    <div id="id01" class="modal">
+    
   
-      <form class="modal-content animate" action="https://polskoydm.pythonanywhere.com/user_login" method="POST">
-        <div class="imgcontainer">
-          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-          <img src="https://i.pinimg.com/736x/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg" alt="Avatar" class="avatar">
-        </div>
-    
-        <div class="container">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="email" required>
-    
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="password" required>
-            
-          <button class="submitbtn" type="submit">Login</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
-        </div>
-    
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-          <span class="psw">Dont Have Account? <a href="#">Register</a></span>
-        </div>
-      </form>
-    </div>
-    
 
     <script type="module" src="/src/main.js"></script>
 
@@ -67,16 +40,6 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
 
-
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
     </script>
   </body>
 </html>
