@@ -85,27 +85,42 @@
 import axios from 'axios';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
 
 export default {
 
-    created() {
- 
+  setup() {
+    const email = ref('');
+    const image = ref('');
+    const username = ref('');
+
+    const router = useRouter(); // Access the router object
+
+    onMounted(() => {
       const urlParams = new URLSearchParams(window.location.search);
-      const email = urlParams.get('email');
-      const image = urlParams.get('image');
-      const username = urlParams.get('username');
+      email.value = urlParams.get('email');
+      image.value = urlParams.get('image');
+      username.value = urlParams.get('username');
 
-if (email && image && username) {
-  // Set the cookies
-  setCookie('email', email);
-  setCookie('image', image);
-  setCookie('username', username);
-  
-  // Redirect to '/dashboard'
-  this.$router.push('/dashboard');
-}
+      // Set the cookies
+      document.cookie = `email=${encodeURIComponent(email.value)}`;
+      document.cookie = `image=${encodeURIComponent(image.value)}`;
+      document.cookie = `username=${encodeURIComponent(username.value)}`;
 
-  },
+      // Redirect to the dashboard using the router
+      router.push({ name: 'Dashboard' });
+    });
+
+    return {
+      email,
+      image,
+      username
+    };
+  }
+
+
     props: {
     cartItems: {
       type: Array,
