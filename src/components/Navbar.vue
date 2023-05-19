@@ -6,20 +6,20 @@
         <span class="footer-button-label">Home</span>
       </a>
    
-      <a href="/saved" v-if="!userInfo" class="footer-button">
+      <a href="/saved" v-if="!getCookie('email')" class="footer-button">
         <i class="fa-solid fa-calendar fa-lg"></i>
         <span class="footer-button-label">Saved</span>
       </a>
-      <a href="/shoping_cart" class="footer-button" v-if="!userInfo">
+      <a href="/shoping_cart" class="footer-button" v-if="!getCookie('email')">
         <i class="fa-solid fa-cart-shopping fa-lg"></i>
         <span class="footer-button-label">Cart</span>
         <span class="cart-counter">{{ cartItems.length }}</span>
       </a>
-      <a href="https://polskoydm.pythonanywhere.com/user_login" v-if="userInfo" class="footer-button">
+      <a href="https://polskoydm.pythonanywhere.com/user_login" v-if="getCookie('email')" class="footer-button">
         <i class="fa-solid fa-calendar fa-lg"></i>
         <span class="footer-button-label">Saved</span>
       </a>
-      <a href="https://polskoydm.pythonanywhere.com/user_login" class="footer-button" v-if="userInfo">
+      <a href="https://polskoydm.pythonanywhere.com/user_login" class="footer-button" v-if="getCookie('email')">
         <i class="fa-solid fa-cart-shopping fa-lg"></i>
         <span class="footer-button-label">Cart</span>
         <span class="cart-counter">{{ cartItems.length }}</span>
@@ -39,9 +39,9 @@
       <a href="#"><img :src="userImage" style="height:100px" alt="Profile"></a>
       <a href="#">{{ userName }}</a>
       <hr style="color:grey; margin-left:2rem; margin-right:2rem;">
-      <a href="https://polskoydm.pythonanywhere.com/user_register" v-if="!getCookie('email')">Join Us</a>
+      <a href="https://polskoydm.pythonanywhere.com/user_register" v-if="getCookie('email')">Join Us</a>
       <a href="https://polskoydm.pythonanywhere.com/user_login" v-if="!getCookie('email')">Messages</a>
-      <a href="https://www.wheels.works/about">About</a>
+      <a href="https://www.wheels.works/about" v-if="getCookie('email')">About</a>
       <a @click="logout" v-if="!getCookie('email')">Logout</a>
     </div>
   </div>
