@@ -1,22 +1,35 @@
-
-<template><h1>Login uou in</h1></template>
 <script>
-import { setCookie } from 'vue-cookie';
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 
 export default {
-  created() {
-    const params = new URLSearchParams(this.$route.fullPath);
-    const email = params.get('email');
-    const image = params.get('image');
-    const username = params.get('username');
+  setup() {
+    const email = ref('');
+    const image = ref('');
+    const username = ref('');
 
-    if (email && image && username) {
-      setCookie('email', email, 7); // Set the 'email' cookie with the provided value for 7 days
-      setCookie('image', image, 7); // Set the 'image' cookie with the provided value for 7 days
-      setCookie('username', username, 7); // Set the 'username' cookie with the provided value for 7 days
+    const router = useRouter(); // Access the router object
 
-      this.$router.push('/dashboard'); // Redirect to the '/dashboard' route
-    }
+    onMounted(() => {
+      const urlParams = new URLSearchParams(window.location.search);
+      email.value = urlParams.get('email');
+      image.value = urlParams.get('image');
+      username.value = urlParams.get('username');
+
+      // Set the cookies
+      document.cookie = `email=${encodeURIComponent(email.value)}`;
+      document.cookie = `image=${encodeURIComponent(image.value)}`;
+      document.cookie = `username=${encodeURIComponent(username.value)}`;
+
+      // Redirect to the dashboard using the router
+      router.push({ name: 'Dashboard' });
+    });
+
+    return {
+      email,
+      image,
+      username
+    };
   }
-}
+};
 </script>
