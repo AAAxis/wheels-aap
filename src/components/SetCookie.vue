@@ -17,9 +17,14 @@ export default {
       username.value = urlParams.get('username');
 
       // Set the cookies
-      document.cookie = `email=${encodeURIComponent(email.value)}`;
-      document.cookie = `image=${encodeURIComponent(image.value)}`;
-      document.cookie = `username=${encodeURIComponent(username.value)}`;
+      const oneYearFromNow = new Date();
+      
+            oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
+
+            document.cookie = `email=${encodeURIComponent(email.value)}; expires=${oneYearFromNow.toUTCString()}`;
+            document.cookie = `image=${encodeURIComponent(image.value)}; expires=${oneYearFromNow.toUTCString()}`;
+            document.cookie = `username=${encodeURIComponent(username.value)}; expires=${oneYearFromNow.toUTCString()}`;
+
 
       // Redirect to the dashboard using the router
       router.push({ name: 'Index' });
