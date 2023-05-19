@@ -22,7 +22,7 @@ export default {
       document.cookie = `username=${encodeURIComponent(username.value)}`;
 
       // Redirect to the dashboard using the router
-      router.push({ name: 'Dashboard' });
+      router.push({ name: 'Index' });
     });
 
     return {

@@ -91,34 +91,18 @@ import { useRouter } from 'vue-router';
 
 export default {
 
-  setup() {
-    const email = ref('');
-    const image = ref('');
-    const username = ref('');
+  mounted() {
+  // Get the Vue Router instance
+  const router = useRouter();
 
-    const router = useRouter(); // Access the router object
+  // Check if the "email" cookie exists
+  const emailCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('email='));
 
-    onMounted(() => {
-      const urlParams = new URLSearchParams(window.location.search);
-      email.value = urlParams.get('email');
-      image.value = urlParams.get('image');
-      username.value = urlParams.get('username');
-
-      // Set the cookies
-      document.cookie = `email=${encodeURIComponent(email.value)}`;
-      document.cookie = `image=${encodeURIComponent(image.value)}`;
-      document.cookie = `username=${encodeURIComponent(username.value)}`;
-
-      // Redirect to the dashboard using the router
-      router.push({ name: 'Dashboard' });
-    });
-
-    return {
-      email,
-      image,
-      username
-    };
+  if (emailCookie) {
+    // Redirect to the dashboard
+    router.push('/dashboard');
   }
+},
 
 
     props: {
