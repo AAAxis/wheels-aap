@@ -1,16 +1,13 @@
 <template>
-
-
-<div>
+  <div>
     <div v-if="hasEmailCookie">
       <!-- HTML code to show when the "email" cookie exists -->
-      <h1>Welcome to the Dashboard!</h1>
       <Dashboard></Dashboard>
       <!-- Other content for authenticated users -->
     </div>
     <div v-else>
       <!-- HTML code to show when the "email" cookie doesn't exist -->
-      <h1>Please log in to access the Dashboard</h1>
+
       <div>
 <div>
   <div class="topnav" id="myTopnav">
@@ -87,52 +84,38 @@
 </div>
       <!-- Other content for non-authenticated users -->
     </div>
+
+    <!-- Rest of the template -->
   </div>
-
-
-  </template>
+</template>
 
 <script>
-import Dashboard from './Dashboard.vue'; 
+import Dashboard from './Dashboard.vue';
 import axios from 'axios';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
-
 export default {
+  components: {
+    Dashboard
+  },
 
-  computed: {
-  hasEmailCookie() {
-    // Check if the "email" cookie exists
-    const emailCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('email='));
-    
-    // Return true if the cookie exists, false otherwise
-    return !!emailCookie;
-  }
-}
-
-
-components: {
-        Dashboard
-    },
-
-
-    props: {
+  props: {
     cartItems: {
       type: Array,
       required: true
     }
   },
- 
+
   data() {
     return {
       products: [],
       branches: [],
       selectedCategory: null,
       searchTerm: '',
-      swiper: null,
+      swiper: null
     };
   },
 
@@ -183,12 +166,20 @@ components: {
           prevEl: null
         }
       });
-    },
-
-     
+    }
   },
 
   computed: {
+    hasEmailCookie() {
+      // Check if the "email" cookie exists
+      const emailCookie = document.cookie
+        .split(';')
+        .find(cookie => cookie.trim().startsWith('email='));
+
+      // Return true if the cookie exists, false otherwise
+      return !!emailCookie;
+    },
+
     filteredProducts() {
       let filtered = this.products;
 
