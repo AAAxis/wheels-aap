@@ -9,24 +9,24 @@
 <div class="footer-buttons">
     <a @click="openNav" class="footer-button">
         <i class="fa-solid fa-user fa-lg"></i>
-        <span class="navbar-link-label">Profile</span>
+        <span class="footer-button-label">Profile</span>
       </a>
 
     <div class="navbar">
       <a @click="showComponent('Dashboard')" class="footer-button">
         <i class="fa-solid fa-house fa-lg"></i>
-        <span class="navbar-link-label">Home</span>
+        <span class="footer-button-label">Home</span>
       </a>
   
       <a @click="showComponent('History')" class="footer-button">
         <i class="fa-solid fa-history fa-lg"></i>
-        <span class="navbar-link-label">Orders</span>
+        <span class="footer-button-label">Orders</span>
       </a>
   
       <a @click="showComponent('Cart')" class="footer-button">
         <i class="fa-solid fa-cart-shopping fa-lg"></i>
-        <span class="navbar-link-label">Cart</span>
-        <span class="cart-items-count">{{ cartItems.length }}</span>
+        <span class="footer-button-label">Cart</span>
+        <span class="cart-counter">{{ cartItems.length }}</span>
       </a>
   
     </div>
