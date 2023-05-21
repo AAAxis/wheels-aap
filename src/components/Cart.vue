@@ -96,7 +96,7 @@ export default {
   // The order was successfully created
   response.json().then(function(data) {
     const totalPrice = data.total;
-    const orderID = data.orderID;
+    const orderID = data.order_id;
    
     // Add the PayPal button rendering code here
     paypal.Buttons({
