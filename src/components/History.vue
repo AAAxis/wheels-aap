@@ -28,7 +28,7 @@
     methods: {
       fetchOrders(email) {
         // Send a GET request with the email as a query parameter
-        axios.get('/orders', { params: { email } })
+        axios.get('https://polskoydm.pythonanywhere.com/history', { params: { email } })
           .then(response => {
             // Assign the received data to the component's data property
             this.orders = response.data.orders;
