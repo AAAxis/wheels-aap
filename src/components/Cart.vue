@@ -73,7 +73,7 @@ export default {
             purchase_units: [
               {
                 amount: {
-                  value: 'YOUR_ORDER_TOTAL',
+                  value: this.order.total.toString(),
                 },
               },
             ],
@@ -93,7 +93,7 @@ export default {
               }),
             }).then(function () {
               // Redirect the user to the thank-you page
-              window.location.href = '/thank-you';
+              const redirectUrl = `/thank-you?order=${this.order.id}&name=${this.order.name}&address=${this.order.address}&email=${this.order.email}`;
             });
           });
         },
