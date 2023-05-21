@@ -42,8 +42,9 @@
       <a href="#">{{ userName }}</a>
       <hr style="color:grey; margin-left:2rem; margin-right:2rem;">
       <a>{{ userAddress }}</a>
+      <a>{{ userEmail }}</a>
       <a>{{ userMobile }}</a>
-      <a href="#">Edit Profile</a>
+      <a href="https://polskoydm.pythonanywhere.com/user_edit">Edit Profile</a>
       <a @click="logout">Logout</a>
     </div>
   
