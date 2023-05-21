@@ -98,6 +98,11 @@ export default {
     const orderID = data.orderID;
     console.log(orderID);
 
+    // Retrieve name, address, and email from local storage
+    const name = localStorage.getItem('name');
+    const address = localStorage.getItem('address');
+    const email = localStorage.getItem('email');
+
     // Add the PayPal button rendering code here
     paypal.Buttons({
       createOrder: function(data, actions) {
@@ -106,14 +111,14 @@ export default {
           purchase_units: [
             {
               amount: {
-                value: this.getTotalPrice().toString()  // Convert to string
+                value: getTotalPrice().toString() // Call the getTotalPrice() function to calculate total price
               }
             }
           ]
         });
       },
       onApprove: function(data, actions) {
-        // Redirect the user to the thank-you page
+        // Redirect the user to the thank-you page with order details
         const redirectUrl = `https://polskoydm.pythonanywhere.com/thank-you?order=${orderID}&name=${name}&address=${address}&email=${email}`;
         // Perform the redirect here
         window.location.href = redirectUrl;
