@@ -1,7 +1,7 @@
 <template>
     <!-- Default component -->
     <component :is="currentComponent"></component>
-    
+
   <div class="footer">
     <div class="footer-buttons">
       <a @click="showComponent('Dashboard')" class="footer-button">
@@ -9,7 +9,7 @@
         <span class="footer-button-label">Home</span>
       </a>
    
-      <a @click="showComponent('Historu')" class="footer-button">
+      <a @click="showComponent('History')" class="footer-button">
         <i class="fa-solid fa-history fa-lg"></i>
   <span class="footer-button-label">Orders</span>
       </a>

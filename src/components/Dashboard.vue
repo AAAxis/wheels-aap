@@ -1,16 +1,6 @@
 <template>
     <div>
 
-        <div class="cart-summary">
-      <h3>Cart Summary</h3>
-      <p>Total Items: {{ cartItems.length }}</p>
-      <ul>
-        <li v-for="item in cartItems" :key="item.id">
-          {{ item.name }} - ${{ item.price }} (Quantity: {{ item.quantity }})
-        </li>
-      </ul>
-    </div>
-
   
       <div>
         <div class="topnav" id="myTopnav">
@@ -61,11 +51,9 @@
     </div>
 <br><br><br><br><br>
 
-    <Navbar :cartItems="cartItems" />
   </template>
 
 <script>
-import Navbar from './Navbar.vue'; 
 import axios from 'axios';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
@@ -73,10 +61,6 @@ import 'swiper/swiper-bundle.css';
 
 export default {
 
-  
-        components: {
-        Navbar
-    },
 
 
    
