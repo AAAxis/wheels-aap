@@ -2,7 +2,7 @@
   <div>
     <div v-if="hasEmailCookie">
       <!-- HTML code to show when the "email" cookie exists -->
-      <Dashboard></Dashboard>
+      <Navbar></Navbar>
       <!-- Other content for authenticated users -->
     </div>
     <div v-else>
@@ -89,14 +89,14 @@
   </div>
 </template>
 <script>
-import Dashboard from './Dashboard.vue';
+import Navbar from './Navbar.vue';
 import axios from 'axios';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 
 export default {
   components: {
-    Dashboard
+    Navbar
   },
 
   props: {
