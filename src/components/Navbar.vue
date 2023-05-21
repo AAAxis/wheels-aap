@@ -1,31 +1,37 @@
 <template>
-  <div id="app">
-    
+
+
     <Dashboard v-if="currentComponent === 'Dashboard'" :cartItems="cartItems" @cart-updated="cartItems = $event" />
  <History v-if="currentComponent === 'History'" />
     <Cart v-if="currentComponent === 'Cart'" :cartItems="cartItems" />
 
+    <div class="footer">
+<div class="footer-buttons">
+    <a @click="openNav" class="footer-button">
+        <i class="fa-solid fa-user fa-lg"></i>
+        <span class="navbar-link-label">Profile</span>
+      </a>
+
     <div class="navbar">
-      <a @click="showComponent('Dashboard')" class="navbar-link">
+      <a @click="showComponent('Dashboard')" class="footer-button">
         <i class="fa-solid fa-house fa-lg"></i>
         <span class="navbar-link-label">Home</span>
       </a>
   
-      <a @click="showComponent('History')" class="navbar-link">
+      <a @click="showComponent('History')" class="footer-button">
         <i class="fa-solid fa-history fa-lg"></i>
         <span class="navbar-link-label">Orders</span>
       </a>
   
-      <a @click="showComponent('Cart')" class="navbar-link">
+      <a @click="showComponent('Cart')" class="footer-button">
         <i class="fa-solid fa-cart-shopping fa-lg"></i>
         <span class="navbar-link-label">Cart</span>
         <span class="cart-items-count">{{ cartItems.length }}</span>
       </a>
   
-      <a @click="openNav" class="navbar-link">
-        <i class="fa-solid fa-user fa-lg"></i>
-        <span class="navbar-link-label">Profile</span>
-      </a>
+    </div>
+
+  </div>
   
       <!-- Rest of the Navbar content -->
     </div>
@@ -43,7 +49,6 @@
     </div>
   
 
-  </div>
 </template>
 
 <script>

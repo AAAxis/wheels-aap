@@ -63,6 +63,10 @@
 
 <div class="footer">
 <div class="footer-buttons">
+  <a href="https://polskoydm.pythonanywhere.com/user_login" class="footer-button">
+  <i class="fa-solid fa-user fa-lg"></i>
+  <span class="footer-button-label">Profile</span>
+</a>
 <a href="/" class="footer-button">
   <i class="fa-solid fa-house fa-lg"></i>
   <span class="footer-button-label">Home</span>
@@ -76,10 +80,7 @@
   <i class="fa-solid fa-cart-shopping fa-lg"></i>
   <span class="footer-button-label">Cart</span>
 </a>
-<a href="https://polskoydm.pythonanywhere.com/user_login" class="footer-button">
-  <i class="fa-solid fa-user fa-lg"></i>
-  <span class="footer-button-label">Profile</span>
-</a>
+
 </div>
 </div>
       <!-- Other content for non-authenticated users -->
