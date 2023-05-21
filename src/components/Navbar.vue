@@ -1,16 +1,19 @@
 <template>
+    <!-- Default component -->
+    <component :is="currentComponent"></component>
+    
   <div class="footer">
     <div class="footer-buttons">
-      <a href="/" class="footer-button">
+      <a @click="showComponent('Dashboard')" class="footer-button">
         <i class="fa-solid fa-house fa-lg"></i>
         <span class="footer-button-label">Home</span>
       </a>
    
-      <a href="/history" class="footer-button">
+      <a @click="showComponent('Historu')" class="footer-button">
         <i class="fa-solid fa-history fa-lg"></i>
   <span class="footer-button-label">Orders</span>
       </a>
-      <a href="/cart" class="footer-button">
+      <a @click="showComponent('Cart')" class="footer-button">
         <i class="fa-solid fa-cart-shopping fa-lg"></i>
         <span class="footer-button-label">Cart</span>
         <span class="cart-counter">{{ cartItems.length }}</span>
@@ -40,7 +43,15 @@
 </template>
 
 <script>
+import Cart from './Cart.vue';
+import History from './History.vue';
+import Dashboard from './Dashboard.vue';
 export default {
+  components: {
+    Cart,
+    History,
+    Dashboard
+  },
   props: {
     cartItems: {
       type: Array,
@@ -49,6 +60,7 @@ export default {
   },
   data() {
     return {
+      currentComponent: 'Dashboard', // Set default component here
       userImage: "",
       userName: "",
       userEmail: ""

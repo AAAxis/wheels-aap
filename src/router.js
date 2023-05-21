@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Index from './components/Index.vue';
-import History from './components/History.vue';
-import Cart from './components/Cart.vue';
-import Dashboard from './components/Dashboard.vue';
+import Navbar from './components/Navbar.vue';
 import SetCookie from './components/SetCookie.vue';
 
 
@@ -13,20 +11,11 @@ const routes = [
     component: Index,
   },
   {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: Dashboard,
+    path: '/navbar',
+    name: 'Navbar',
+    component: Navbar,
   },
-  {
-    path: '/history',
-    name: 'History',
-    component: History,
-  },
-  {
-    path: '/cart',
-    name: 'Cart',
-    component: Cart,
-  },
+ 
   {
     path: '/setcookie',
     name: 'SetCookie',
