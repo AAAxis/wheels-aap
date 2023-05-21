@@ -37,7 +37,7 @@
       <a @click="logout">Logout</a>
     </div>
   
-    <Dashboard v-if="currentComponent === 'Dashboard'" :cartItems="cartItems" />
+    <Dashboard v-if="currentComponent === 'Dashboard'" :cartItems="cartItems" @cart-updated="updateCartItems" />
     <History v-if="currentComponent === 'History'" />
     <Cart v-if="currentComponent === 'Cart'" :cartItems="cartItems" />
   </div>

@@ -61,6 +61,13 @@ import 'swiper/swiper-bundle.css';
 
 export default {
 
+  props: {
+  cartItems: {
+    type: Array,
+    required: true
+  }
+},
+
  
   data() {
     return {
@@ -138,8 +145,10 @@ export default {
         this.cartItems.push(cartItem);
       }
 
+      this.$emit('cart-updated', this.cartItems); // Emit the 'cart-updated' event
       console.log('Product added to cart:', product);
     }
+
   },
  
 
