@@ -81,6 +81,9 @@ export default {
       // Implement logout functionality
     },
     showComponent(component) {
+      if (component === 'Cart' && this.cartItems.length === 0) {
+        return; // Block moving to the Cart component if the cart is empty
+      }
       this.currentComponent = component;
     },
     setUserData() {
