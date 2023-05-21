@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    
+    <Dashboard v-if="currentComponent === 'Dashboard'" :cartItems="cartItems" @cart-updated="cartItems = $event" />
+ <History v-if="currentComponent === 'History'" />
+    <Cart v-if="currentComponent === 'Cart'" :cartItems="cartItems" />
+
     <div class="navbar">
       <a @click="showComponent('Dashboard')" class="navbar-link">
         <i class="fa-solid fa-house fa-lg"></i>
@@ -37,9 +42,7 @@
       <a @click="logout">Logout</a>
     </div>
   
-    <Dashboard v-if="currentComponent === 'Dashboard'" :cartItems="cartItems" @cart-updated="cartItems = $event" />
- <History v-if="currentComponent === 'History'" />
-    <Cart v-if="currentComponent === 'Cart'" :cartItems="cartItems" />
+
   </div>
 </template>
 
