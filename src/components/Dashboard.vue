@@ -137,6 +137,7 @@ export default {
       } else {
         const cartItem = {
           id: product.id,
+          image: product.image,
           name: product.name,
           price: product.price,
           quantity: 1
