@@ -44,7 +44,7 @@
       <a>{{ userAddress }}</a>
       <a>{{ userEmail }}</a>
       <a>{{ userMobile }}</a>
-      <a href="https://polskoydm.pythonanywhere.com/user_edit">Edit Profile</a>
+      <a href="https://polskoydm.pythonanywhere.com/{{ userEmail }}/profile">Edit Profile</a>
       <a @click="logout">Logout</a>
     </div>
   
