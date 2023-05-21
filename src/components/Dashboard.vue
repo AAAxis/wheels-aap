@@ -130,25 +130,25 @@ export default {
     },
 
     addToCart(product) {
-      const existingProduct = this.cartItems.find(item => item.id === product.id);
+    const existingProduct = this.cartItems.find(item => item.id === product.id);
 
-      if (existingProduct) {
-        existingProduct.quantity++;
-      } else {
-        const cartItem = {
-          id: product.id,
-          image: product.image,
-          name: product.name,
-          price: product.price,
-          quantity: 1
-        };
+    if (existingProduct) {
+      existingProduct.quantity++;
+    } else {
+      const cartItem = {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        quantity: 1,
+        image: product.image // Include the image URL in the cart item
+      };
 
-        this.cartItems.push(cartItem);
-      }
-
-      this.$emit('cart-updated', this.cartItems); // Emit the 'cart-updated' event to the parent component (Index)
-      console.log('Product added to cart:', product);
+      this.cartItems.push(cartItem);
     }
+
+    this.$emit('cart-updated', this.cartItems); // Emit the 'cart-updated' event to the parent component (Index)
+    console.log('Product added to cart:', product);
+  }
 
   },
  
