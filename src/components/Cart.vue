@@ -46,7 +46,6 @@ export default {
 
   data() {
     return {
-      isOrderCompleted: false,
       isCheckoutClicked: false,
       // Other data properties
     };
@@ -95,8 +94,8 @@ export default {
   .then(response => {
     if (response.ok) {
       // The order was successfully created
-      console.log('Order created!');
-
+      console.log(response.json());
+   
      
       // Add the PayPal button rendering code here
       paypal.Buttons({
