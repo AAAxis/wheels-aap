@@ -113,16 +113,26 @@ export default {
         });
       },
 
-        onApprove: function (data, actions) {
-          // Capture the funds from the transaction
-          return actions.order.capture().then(function (details) {
-        
-            }).then(function () {
+      onApprove: function(data, actions) {
+              // Capture the funds from the transaction
+              return actions.order.capture().then(function(details) {
+                // Call your server to save the transaction
+                return fetch('/paypal-transaction-complete', {
+                  method: 'post',
+                  headers: {
+                    'content-type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    orderID: data.orderID
+                  })
+                }).then(function() {
+                  // Redirect the user to the thank-you page
               // Redirect the user to the thank-you page
               const redirectUrl = `https://polskoydm.pythonanywhere.com/thank-you?order=${this.order.id}&name=${this.order.name}&address=${this.order.address}&email=${this.order.email}`;
+        
             });
-     
-        },
+              });
+            }
       }).render('#paypal-button-container');
   
       // Perform any additional actions or show a success message
