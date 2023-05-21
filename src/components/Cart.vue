@@ -5,7 +5,7 @@
       <div class="cart-item-details">
         <div class="cart-item-left">
           <img :src="getImageUrl(item.image)" :alt="item.name" class="cart-item-image">
-          <span class="cart-item-name">{{ item.name }}</span>
+          <span class="cart-item-name">{{ item.name }} - ${{ item.price }}</span>
         </div>
         <div class="cart-item-right">
           <div class="cart-item-quantity">
@@ -13,7 +13,6 @@
             <span class="cart-item-quantity-value">{{ item.quantity }}</span>
             <button @click="increaseQuantity(item)">+</button>
           </div>
-          <span class="cart-item-price">{{ item.price }}</span>
           <button @click="removeItem(item)" class="cart-item-delete">Delete</button>
         </div>
       </div>
