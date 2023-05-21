@@ -145,7 +145,7 @@ export default {
         this.cartItems.push(cartItem);
       }
 
-      this.$emit('cart-updated', this.cartItems); // Emit the 'cart-updated' event
+      this.$emit('cart-updated', this.cartItems); // Emit the 'cart-updated' event to the parent component (Index)
       console.log('Product added to cart:', product);
     }
 
