@@ -88,13 +88,11 @@
     <!-- Rest of the template -->
   </div>
 </template>
-
 <script>
 import Dashboard from './Dashboard.vue';
 import axios from 'axios';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
-
 
 export default {
   components: {
@@ -170,10 +168,8 @@ export default {
 
   computed: {
     hasEmailCookie() {
-    // Check if the "email" value exists in local storage
-    return localStorage.getItem('email') !== null;
-  },
-   
+      // Check if the "email" value exists in local storage
+      return localStorage.getItem('email') !== null;
     },
 
     filteredProducts() {
@@ -193,5 +189,5 @@ export default {
       return filtered;
     }
   }
-
+}
 </script>
