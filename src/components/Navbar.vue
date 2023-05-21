@@ -41,9 +41,9 @@
       <a href="#"><img :src="userImage" style="height:100px" alt="Image"></a>
       <a href="#">{{ userName }}</a>
       <hr style="color:grey; margin-left:2rem; margin-right:2rem;">
-      <a href="https://polskoydm.pythonanywhere.com/user_register">Join Us</a>
-      <a href="https://polskoydm.pythonanywhere.com/user_login" >Messages</a>
-      <a href="https://www.wheels.works/about" >About</a>
+      <a>{{ userAddress }}</a>
+      <a>{{ userMobile }}</a>
+      <a href="#">Edit Profile</a>
       <a @click="logout">Logout</a>
     </div>
   
@@ -66,6 +66,8 @@ export default {
       userImage: '',
       userName: '',
       userEmail: '',
+      userMobile: '',
+      userAddress: '',
       currentComponent: 'Dashboard',
       cartItems: [] // Initialize with an empty array or with actual cart items
     };
@@ -78,7 +80,15 @@ export default {
       document.getElementById("mySidenav").style.width = "0";
     },
     logout() {
-      // Implement logout functionality
+      // Clear the user data from local storage
+      localStorage.removeItem('email');
+      localStorage.removeItem('image');
+      localStorage.removeItem('username');
+      localStorage.removeItem('address');
+      localStorage.removeItem('mobile');
+
+      // Redirect to the login page
+      window.location.href = '/login';
     },
     showComponent(component) {
       if (component === 'Cart' && this.cartItems.length === 0) {
@@ -90,6 +100,8 @@ export default {
       this.userEmail = localStorage.getItem('email');
       this.userImage = localStorage.getItem('image');
       this.userName = localStorage.getItem('username');
+      this.userAddress = localStorage.getItem('address');
+      this.userMobile = localStorage.getItem('mobile');
     }
   },
   created() {
