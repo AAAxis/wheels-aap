@@ -1,6 +1,6 @@
 <template>
-    <!-- Default component -->
-    <component :is="currentComponent"></component>
+  <!-- Default component -->
+  <component :is="currentComponent"></component>
 
   <div class="footer">
     <div class="footer-buttons">
@@ -8,24 +8,24 @@
         <i class="fa-solid fa-house fa-lg"></i>
         <span class="footer-button-label">Home</span>
       </a>
-   
+
       <a @click="showComponent('History')" class="footer-button">
         <i class="fa-solid fa-history fa-lg"></i>
-  <span class="footer-button-label">Orders</span>
+        <span class="footer-button-label">Orders</span>
       </a>
+
       <a @click="showComponent('Cart')" class="footer-button">
         <i class="fa-solid fa-cart-shopping fa-lg"></i>
         <span class="footer-button-label">Cart</span>
-        <span class="cart-counter">{{ cartItems.length }}</span>
+        <span class="cart-items-count">{{ cartItems.length }}</span>
       </a>
-      
+
       <a @click="openNav" class="footer-button">
         <i class="fa-solid fa-user fa-lg"></i>
         <span class="footer-button-label">Profile</span>
       </a>
     </div>
   </div>
-  
 
   <div>
     <div id="mySidenav" class="sidenav">
@@ -46,6 +46,7 @@
 import Cart from './Cart.vue';
 import History from './History.vue';
 import Dashboard from './Dashboard.vue';
+
 export default {
   components: {
     Cart,
@@ -61,9 +62,9 @@ export default {
   data() {
     return {
       currentComponent: 'Dashboard', // Set default component here
-      userImage: "",
-      userName: "",
-      userEmail: ""
+      userImage: '',
+      userName: '',
+      userEmail: ''
     };
   },
   methods: {
