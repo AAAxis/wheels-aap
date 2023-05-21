@@ -44,7 +44,8 @@
       <a>{{ userAddress }}</a>
       <a>{{ userEmail }}</a>
       <a>{{ userMobile }}</a>
-      <a href="https://polskoydm.pythonanywhere.com/{{ userEmail }}/profile">Edit Profile</a>
+      <a :href="getProfileLink(email)">Edit Profile</a>
+
       <a @click="logout">Logout</a>
     </div>
   
@@ -74,6 +75,9 @@ export default {
     };
   },
   methods: {
+    getProfileLink(userEmail) {
+    return `https://polskoydm.pythonanywhere.com/${userEmail}/profile`;
+  },
     openNav() {
       document.getElementById("mySidenav").style.width = "100%";
     },
