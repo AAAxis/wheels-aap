@@ -4,7 +4,7 @@
     <ul>
       <li v-for="item in cartItems" :key="item.id">
         <div class="cart-item">
-          <img :src="item.image" :alt="item.name" class="cart-item-image">
+          <img :src="getImageUrl(item.image)" :alt="item.name" class="cart-item-image">
           <div class="cart-item-details">
             <span class="cart-item-name">{{ item.name }}</span>
             <div class="cart-item-quantity">
@@ -45,6 +45,9 @@ export default {
     },
     getTotalPrice() {
       return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    },
+    getImageUrl(image) {
+      return `https://polskoydm.pythonanywhere.com/static/uploads/${image}`;
     }
   }
 };
