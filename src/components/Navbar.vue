@@ -88,7 +88,7 @@ export default {
       localStorage.removeItem('mobile');
 
       // Redirect to the login page
-      window.location.href = '/login';
+      window.location.href = 'https://polskoydm.pythonanywhere.com/user_login';
     },
     showComponent(component) {
       if (component === 'Cart' && this.cartItems.length === 0) {
