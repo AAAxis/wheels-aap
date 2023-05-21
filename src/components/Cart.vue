@@ -93,46 +93,34 @@ export default {
   })
   .then(response => {
     if (response.ok) {
-      // The order was successfully created
-      console.log(response.json());
-   
-     
-      // Add the PayPal button rendering code here
-      paypal.Buttons({
-        createOrder: (data, actions) => {
+  // The order was successfully created
+  response.json().then(function(data) {
+    const orderID = data.orderID;
+    console.log(orderID);
+
+    // Add the PayPal button rendering code here
+    paypal.Buttons({
+      createOrder: function(data, actions) {
         // Set up the transaction
         return actions.order.create({
           purchase_units: [
             {
               amount: {
-                value: this.getTotalPrice().toString()  // Convert to string
+                value: this.getTotalPrice().toString() // Convert to string
               }
             }
           ]
         });
       },
-
       onApprove: function(data, actions) {
-              // Capture the funds from the transaction
-              return actions.order.capture().then(function(details) {
-                // Call your server to save the transaction
-                return fetch('/paypal-transaction-complete', {
-                  method: 'post',
-                  headers: {
-                    'content-type': 'application/json'
-                  },
-                  body: JSON.stringify({
-                    orderID: data.orderID
-                  })
-                }).then(function() {
-                  // Redirect the user to the thank-you page
-              // Redirect the user to the thank-you page
-              const redirectUrl = `https://polskoydm.pythonanywhere.com/thank-you?order=${this.order.id}&name=${this.order.name}&address=${this.order.address}&email=${this.order.email}`;
-        
-            });
-              });
-            }
-      }).render('#paypal-button-container');
+        // Redirect the user to the thank-you page
+        const redirectUrl = `https://polskoydm.pythonanywhere.com/thank-you?order=${orderID}&name=${name}&address=${address}&email=${email}`;
+        // Perform the redirect here
+        window.location.href = redirectUrl;
+      }
+    }).render('#paypal-button-container');
+  });
+
   
       // Perform any additional actions or show a success message
     } else {
