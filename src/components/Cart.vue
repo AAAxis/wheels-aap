@@ -60,7 +60,42 @@ export default {
   },
   methods: {
     checkout() {
-      // Implement checkout functionality
+  
+      // Retrieve address, email, and name from local storage
+  const address = localStorage.getItem('address');
+  const email = localStorage.getItem('email');
+  const name = localStorage.getItem('name');
+
+  // Prepare the data for the order
+  const orderData = {
+    total: this.getTotalPrice(),
+    address: address,
+    email: email,
+    name: name,
+    cart: JSON.stringify(this.cartItems)
+  };
+
+  // Make an HTTP POST request to your backend API endpoint
+  fetch('https://polskoydm.pythonanywhere.com/auth-checkout', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(orderData)
+  })
+  .then(response => {
+    if (response.ok) {
+      // The order was successfully created
+      console.log('Order created!');
+      // Perform any additional actions or show a success message
+    } else {
+      // There was an error creating the order
+      console.error('Error creating order');
+      // Handle the error or show an error message
+    }
+  })
+
+
 
       // to show the PayPal button
       this.isOrderCompleted = true;
@@ -83,20 +118,12 @@ export default {
         onApprove: function (data, actions) {
           // Capture the funds from the transaction
           return actions.order.capture().then(function (details) {
-            // Call your server to save the transaction
-            return fetch('/paypal-transaction-complete', {
-              method: 'post',
-              headers: {
-                'content-type': 'application/json',
-              },
-              body: JSON.stringify({
-                orderID: data.orderID,
-              }),
+        
             }).then(function () {
               // Redirect the user to the thank-you page
-              const redirectUrl = `/thank-you?order=${this.order.id}&name=${this.order.name}&address=${this.order.address}&email=${this.order.email}`;
+              const redirectUrl = `https://polskoydm.pythonanywhere.com/thank-you?order=${this.order.id}&name=${this.order.name}&address=${this.order.address}&email=${this.order.email}`;
             });
-          });
+     
         },
       }).render('#paypal-button-container');
   
