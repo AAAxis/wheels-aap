@@ -4,7 +4,7 @@
       <div v-for="order in orders" :key="order.id">
         <h3>Order ID: {{ order.id }}</h3>
         <ul>
-          <li v-for="item in order.cart_items" :key="item">{{ item }}</li>
+          <li v-for="item in getCartItems(order)" :key="item">{{ item }}</li>
         </ul>
       </div>
     </div>
@@ -43,6 +43,11 @@
               console.error('Error:', error.message);
             }
           });
+      },
+      getCartItems(order) {
+        // Extract the cart items for the given order
+        const cartItems = order.cart_items;
+        return cartItems || [];
       },
     },
   };
