@@ -73,27 +73,16 @@ export default {
       return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
     },
     mounted() {
-      fetch('/your-server-endpoint')
-        .then(response => {
-          if (response.ok) {
-            response.json().then(data => {
-              const orderID = data.orderID;
-              console.log(orderID);
-              // Add the PayPal button rendering code here
-              paypal.Buttons({
-                createOrder: createOrder.bind(this), // Bind the function to the component context
-                onApprove: (data, actions) => {
-                  // Redirect the user to the thank-you page with order details
-                  const redirectUrl = `https://polskoydm.pythonanywhere.com/thank-you?order=${data.orderID}&name=${this.name}&address=${this.address}&email=${this.email}`;
-                  // Perform the redirect here
-                  window.location.href = redirectUrl;
-                }
-              }).render('#paypal-button-container');
-            });
-          } else {
-            console.error('Error retrieving data');
-          }
-        });
+      // Add the PayPal button rendering code here
+      paypal.Buttons({
+        createOrder: createOrder.bind(this), // Bind the function to the component context
+        onApprove: (data, actions) => {
+          // Redirect the user to the thank-you page with order details
+          const redirectUrl = `https://polskoydm.pythonanywhere.com/thank-you?order=${data.orderID}&name=${this.name}&address=${this.address}&email=${this.email}`;
+          // Perform the redirect here
+          window.location.href = redirectUrl;
+        }
+      }).render('#paypal-button-container');
     },
     checkout() {
       // Check if checkout button was already clicked
@@ -154,6 +143,20 @@ export default {
         this.cartItems.splice(index, 1);
       }
     }
+  },
+  mounted() {
+    // Add the PayPal button rendering code here
+    this.$nextTick(() => {
+      paypal.Buttons({
+        createOrder: createOrder.bind(this), // Bind the function to the component context
+        onApprove: (data, actions) => {
+          // Redirect the user to the thank-you page with order details
+          const redirectUrl = `https://polskoydm.pythonanywhere.com/thank-you?order=${data.orderID}&name=${this.name}&address=${this.address}&email=${this.email}`;
+          // Perform the redirect here
+          window.location.href = redirectUrl;
+        }
+      }).render('#paypal-button-container');
+    });
   }
 };
 </script>
