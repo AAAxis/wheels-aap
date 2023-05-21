@@ -6,11 +6,11 @@
         <span class="footer-button-label">Home</span>
       </a>
    
-      <a href="/saved" class="footer-button">
-        <i class="fa-solid fa-calendar fa-lg"></i>
-        <span class="footer-button-label">Saved</span>
+      <a href="/history" class="footer-button">
+        <i class="fa-solid fa-history fa-lg"></i>
+  <span class="footer-button-label">Orders</span>
       </a>
-      <a href="/shoping_cart" class="footer-button">
+      <a href="/cart" class="footer-button">
         <i class="fa-solid fa-cart-shopping fa-lg"></i>
         <span class="footer-button-label">Cart</span>
         <span class="cart-counter">{{ cartItems.length }}</span>
@@ -64,23 +64,10 @@ export default {
     logout() {
       // Implement logout functionality
     },
-    getCookie(name) {
-      const cookieString = document.cookie;
-      const cookies = cookieString.split(';');
-
-      for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].trim();
-        if (cookie.startsWith(name + '=')) {
-          return decodeURIComponent(cookie.substring(name.length + 1));
-        }
-      }
-
-      return null;
-    },
     setUserData() {
-      this.userEmail = this.getCookie('email');
-      this.userImage = this.getCookie('image');
-      this.userName = this.getCookie('username');
+      this.userEmail = localStorage.getItem('email');
+      this.userImage = localStorage.getItem('image');
+      this.userName = localStorage.getItem('username');
     }
   },
   created() {

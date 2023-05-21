@@ -69,8 +69,8 @@
 </a>
 
 <a href="https://polskoydm.pythonanywhere.com/user_login" class="footer-button">
-  <i class="fa-solid fa-calendar fa-lg"></i>
-  <span class="footer-button-label">Saved</span>
+  <i class="fa-solid fa-history fa-lg"></i>
+  <span class="footer-button-label">Orders</span>
 </a>
 <a href="https://polskoydm.pythonanywhere.com/user_login" class="footer-button">
   <i class="fa-solid fa-cart-shopping fa-lg"></i>
@@ -94,8 +94,7 @@ import Dashboard from './Dashboard.vue';
 import axios from 'axios';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
-import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+
 
 export default {
   components: {
@@ -171,13 +170,10 @@ export default {
 
   computed: {
     hasEmailCookie() {
-      // Check if the "email" cookie exists
-      const emailCookie = document.cookie
-        .split(';')
-        .find(cookie => cookie.trim().startsWith('email='));
-
-      // Return true if the cookie exists, false otherwise
-      return !!emailCookie;
+    // Check if the "email" value exists in local storage
+    return localStorage.getItem('email') !== null;
+  },
+   
     },
 
     filteredProducts() {
@@ -197,5 +193,5 @@ export default {
       return filtered;
     }
   }
-};
+
 </script>

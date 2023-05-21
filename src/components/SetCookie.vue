@@ -16,15 +16,10 @@ export default {
       image.value = urlParams.get('image');
       username.value = urlParams.get('username');
 
-      // Set the cookies
-      const oneYearFromNow = new Date();
-      
-            oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
-
-            document.cookie = `email=${encodeURIComponent(email.value)}; expires=${oneYearFromNow.toUTCString()}`;
-            document.cookie = `image=${encodeURIComponent(image.value)}; expires=${oneYearFromNow.toUTCString()}`;
-            document.cookie = `username=${encodeURIComponent(username.value)}; expires=${oneYearFromNow.toUTCString()}`;
-
+      // Set the values in local storage
+      localStorage.setItem('email', email.value);
+      localStorage.setItem('image', image.value);
+      localStorage.setItem('username', username.value);
 
       // Redirect to the dashboard using the router
       router.push({ name: 'Index' });
@@ -37,4 +32,5 @@ export default {
     };
   }
 };
+
 </script>
