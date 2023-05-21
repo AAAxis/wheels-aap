@@ -44,7 +44,7 @@
       <a>{{ userAddress }}</a>
       <a>{{ userEmail }}</a>
       <a>{{ userMobile }}</a>
-      <a :href="getProfileLink(email)">Edit Profile</a>
+      <a :href="getProfileLink(userEmail)">Edit Profile</a>
 
       <a @click="logout">Logout</a>
     </div>
