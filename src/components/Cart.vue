@@ -62,8 +62,8 @@ export default {
   },
   methods: {
     checkout() {
-    // Check if checkout button was already clicked
-    if (this.isCheckoutClicked) {
+  // Check if checkout button was already clicked
+  if (this.isCheckoutClicked) {
     return;
   }
   
@@ -97,19 +97,7 @@ export default {
       // The order was successfully created
       console.log('Order created!');
 
-      // to show the PayPal button
-      this.isOrderCompleted = true;
-      // Perform any additional actions or show a success message
-    } else {
-      // There was an error creating the order
-      console.error('Error creating order');
-      // Handle the error or show an error message
-    }
-  })
-
-
-
-
+     
       // Add the PayPal button rendering code here
       paypal.Buttons({
         createOrder: (data, actions) => {
@@ -137,6 +125,17 @@ export default {
         },
       }).render('#paypal-button-container');
   
+      // Perform any additional actions or show a success message
+    } else {
+      // There was an error creating the order
+      console.error('Error creating order');
+      // Handle the error or show an error message
+    }
+  })
+
+
+
+
     },
     increaseQuantity(item) {
       item.quantity++;
