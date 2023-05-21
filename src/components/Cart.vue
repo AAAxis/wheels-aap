@@ -106,17 +106,17 @@ export default {
     // Add the PayPal button rendering code here
     paypal.Buttons({
       createOrder: function(data, actions) {
-        // Set up the transaction
-        return actions.order.create({
-          purchase_units: [
-            {
-              amount: {
-                value: getTotalPrice().toString() // Call the getTotalPrice() function to calculate total price
-              }
-            }
-          ]
-        });
-      },
+  // Set up the transaction
+  return actions.order.create({
+    purchase_units: [
+      {
+        amount: {
+          value: this.getTotalPrice().toString() // Call the getTotalPrice() function within the component context
+        }
+      }
+    ]
+  });
+},
       onApprove: function(data, actions) {
         // Redirect the user to the thank-you page with order details
         const redirectUrl = `https://polskoydm.pythonanywhere.com/thank-you?order=${orderID}&name=${name}&address=${address}&email=${email}`;
