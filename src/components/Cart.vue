@@ -107,7 +107,7 @@ export default {
           purchase_units: [
             {
               amount: {
-                value: getTotalPrice().toString() // Call the getTotalPrice() function to calculate total price
+                value: this.getTotalPrice().toString()  // Call the getTotalPrice() function to calculate total price
               }
             }
           ]
