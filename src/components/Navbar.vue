@@ -35,6 +35,10 @@
     <a href="https://www.wheels.works/about" >About</a>
     <a @click="logout">Logout</a>
   </div>
+
+  <Dashboard v-if="currentComponent === 'Dashboard'" :cartItems="cartItems" />
+  <History v-if="currentComponent === 'History'" />
+  <Cart v-if="currentComponent === 'Cart'" :cartItems="cartItems" />
 </template>
 
 <script>
@@ -58,7 +62,8 @@ export default {
     return {
       userImage: '',
       userName: '',
-      userEmail: ''
+      userEmail: '',
+      currentComponent: 'Dashboard'
     };
   },
   methods: {
