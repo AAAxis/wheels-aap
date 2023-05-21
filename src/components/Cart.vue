@@ -23,7 +23,8 @@
     </div>
     <div class="cart-total">
       <span class="cart-total-text">Total: {{ getTotalPrice() }}</span>
-      <button @click="checkout" class="checkout-button">Checkout</button>
+      <button @click="checkout" class="checkout-button" :disabled="isCheckoutClicked">Checkout</button>
+
     </div>
   </div>
 
@@ -46,6 +47,7 @@ export default {
   data() {
     return {
       isOrderCompleted: false,
+      isCheckoutClicked: false,
       // Other data properties
     };
   },
@@ -60,6 +62,13 @@ export default {
   },
   methods: {
     checkout() {
+    // Check if checkout button was already clicked
+    if (this.isCheckoutClicked) {
+    return;
+  }
+  
+  // Mark the checkout button as clicked
+  this.isCheckoutClicked = true;
   
       // Retrieve address, email, and name from local storage
   const address = localStorage.getItem('address');
@@ -87,6 +96,9 @@ export default {
     if (response.ok) {
       // The order was successfully created
       console.log('Order created!');
+
+      // to show the PayPal button
+      this.isOrderCompleted = true;
       // Perform any additional actions or show a success message
     } else {
       // There was an error creating the order
@@ -97,8 +109,6 @@ export default {
 
 
 
-      // to show the PayPal button
-      this.isOrderCompleted = true;
 
       // Add the PayPal button rendering code here
       paypal.Buttons({
