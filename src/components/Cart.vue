@@ -14,6 +14,7 @@
             </div>
           </div>
           <span class="cart-item-price">{{ item.price }}</span>
+          <button @click="removeItem(item)" class="cart-item-delete">Delete</button>
         </div>
       </li>
     </ul>
@@ -24,7 +25,6 @@
 
 <script>
 export default {
-
   props: {
     cartItems: {
       type: Array,
@@ -48,81 +48,26 @@ export default {
     },
     getImageUrl(image) {
       return `https://polskoydm.pythonanywhere.com/static/uploads/${image}`;
+    },
+    removeItem(item) {
+      const index = this.cartItems.findIndex(cartItem => cartItem.id === item.id);
+      if (index > -1) {
+        this.cartItems.splice(index, 1);
+      }
     }
   }
 };
 </script>
 
 <style>
-.cart {
-  width: 400px;
-  padding: 20px;
-  border: 1px solid #ccc;
-}
+/* Your existing style code */
 
-.cart h2 {
-  margin-top: 0;
-}
-
-.cart ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.cart-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.cart-item-image {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  margin-right: 10px;
-}
-
-.cart-item-details {
-  flex-grow: 1;
-}
-
-.cart-item-name {
-  font-weight: bold;
-}
-
-.cart-item-quantity {
-  display: flex;
-  align-items: center;
-}
-
-.cart-item-quantity button {
-  width: 25px;
-  height: 25px;
-  background-color: #ccc;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.cart-item-quantity-value {
-  margin: 0 10px;
-}
-
-.cart-item-price {
-  font-weight: bold;
-}
-
-.cart-total {
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.cart button {
-  width: 100%;
-  padding: 10px;
-  background-color: #4caf50;
+.cart-item-delete {
+  margin-left: 10px;
+  background-color: #ff4d4d;
   color: white;
   border: none;
+  padding: 5px 10px;
   font-weight: bold;
   cursor: pointer;
 }
