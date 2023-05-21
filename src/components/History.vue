@@ -1,55 +1,38 @@
-<!-- Orders.vue -->
 <template>
     <div>
-      <div v-for="order in orders" :key="order.id">
-        <h3>Order ID: {{ order.id }}</h3>
-        <ul>
-          <li v-for="item in getCartItems(order)" :key="item">{{ item }}</li>
-        </ul>
-      </div>
+      <ul>
+        <li v-for="order in orders" :key="order.id">
+          <h3>Order ID: {{ order.id }}</h3>
+          <p>Status: {{ order.status }}</p>
+          <p>Items: {{ order.items.join(', ') }}</p>
+        </li>
+      </ul>
     </div>
   </template>
   
   <script>
-  import axios from 'axios';
-  
   export default {
     data() {
       return {
-        orders: [],
+        orders: [] // initialize an empty array to store the orders
       };
     },
     mounted() {
-      const email = localStorage.getItem('email');
-      if (email) {
-        this.fetchOrders(email);
-      }
+      this.fetchOrders(); // fetch orders when the component is mounted
     },
     methods: {
-      fetchOrders(email) {
-        // Send a GET request with the email as a query parameter
-        axios
-          .get('https://polskoydm.pythonanywhere.com/history', { params: { email } })
-          .then(response => {
-            // Assign the received data to the component's data property
-            this.orders = response.data.orders;
+      fetchOrders() {
+        // make an HTTP request to the '/history' endpoint
+        fetch('https://polskoydm.pythonanywhere.com/history')
+          .then(response => response.json())
+          .then(data => {
+            this.orders = data; // assign the retrieved data to the 'orders' array
           })
           .catch(error => {
-            if (error.response) {
-              // Handle the error when a response with a non-2xx status code is received
-              console.error('Error:', error.response.data.message);
-            } else {
-              // Handle other types of errors
-              console.error('Error:', error.message);
-            }
+            console.error('Error fetching orders:', error);
           });
-      },
-      getCartItems(order) {
-        // Extract the cart items for the given order
-        const cartItems = order.cart_items;
-        return cartItems || [];
-      },
-    },
+      }
+    }
   };
   </script>
   
