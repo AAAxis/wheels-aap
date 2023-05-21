@@ -17,8 +17,10 @@
         </div>
       </div>
     </div>
-    <div class="cart-total">Total: {{ getTotalPrice() }}</div>
-    <button @click="checkout" class="checkout-button">Checkout</button>
+    <div class="cart-total">
+      <span class="cart-total-text">Total: {{ getTotalPrice() }}</span>
+      <button @click="checkout" class="checkout-button">Checkout</button>
+    </div>
   </div>
 </template>
 
@@ -92,13 +94,25 @@
     margin-bottom: 5px;
   }
   .cart-total {
-    font-size: 18px;
-    margin-top: 10px;
-  }
-  .checkout-button {
-    padding: 10px 20px;
-    font-size: 18px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.cart-total-text {
+  font-weight: bold;
+}
+
+.checkout-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
 }
 </style>
 
