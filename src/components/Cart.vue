@@ -1,5 +1,9 @@
+
 <template>
   <div class="cart">
+    <!-- Your existing code -->
+
+    <div class="cart">
     <h2>Cart</h2>
     <div v-for="item in cartItems" :key="item.id" class="cart-item">
       <div class="cart-item-details">
@@ -22,7 +26,109 @@
       <button @click="checkout" class="checkout-button">Checkout</button>
     </div>
   </div>
+
+
+
+
+
+    <!-- Render the PayPal button after checkout -->
+    <div v-if="isOrderCompleted">
+      <div class="paypal-button-container">
+        <div id="paypal-button-container"></div>
+      </div>
+    </div>
+  </div>
 </template>
+
+<script>
+export default {
+
+  data() {
+    return {
+      isOrderCompleted: false,
+      // Other data properties
+    };
+  },
+
+  
+  
+  props: {
+    cartItems: {
+      type: Array,
+      required: true
+    }
+  },
+  methods: {
+    checkout() {
+      // Implement checkout functionality
+
+      // to show the PayPal button
+      this.isOrderCompleted = true;
+
+      // Add the PayPal button rendering code here
+      paypal.Buttons({
+        createOrder: function (data, actions) {
+          // Set up the transaction
+          return actions.order.create({
+            purchase_units: [
+              {
+                amount: {
+                  value: 'YOUR_ORDER_TOTAL',
+                },
+              },
+            ],
+          });
+        },
+        onApprove: function (data, actions) {
+          // Capture the funds from the transaction
+          return actions.order.capture().then(function (details) {
+            // Call your server to save the transaction
+            return fetch('/paypal-transaction-complete', {
+              method: 'post',
+              headers: {
+                'content-type': 'application/json',
+              },
+              body: JSON.stringify({
+                orderID: data.orderID,
+              }),
+            }).then(function () {
+              // Redirect the user to the thank-you page
+              window.location.href = '/thank-you';
+            });
+          });
+        },
+      }).render('#paypal-button-container');
+  
+    },
+    increaseQuantity(item) {
+      item.quantity++;
+    },
+    decreaseQuantity(item) {
+      if (item.quantity > 1) {
+        item.quantity--;
+      }
+    },
+    getTotalPrice() {
+      return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    },
+    getImageUrl(image) {
+      return `https://polskoydm.pythonanywhere.com/static/uploads/${image}`;
+    },
+    removeItem(item) {
+      const index = this.cartItems.findIndex(cartItem => cartItem.id === item.id);
+      if (index > -1) {
+        this.cartItems.splice(index, 1);
+      }
+    }
+    
+  }
+  
+};
+</script>
+
+
+
+
 
 <style>
 .cart-item-delete {
@@ -110,39 +216,3 @@
 }
 }
 </style>
-
-<script>
-export default {
-  props: {
-    cartItems: {
-      type: Array,
-      required: true
-    }
-  },
-  methods: {
-    checkout() {
-      // Implement checkout functionality
-    },
-    increaseQuantity(item) {
-      item.quantity++;
-    },
-    decreaseQuantity(item) {
-      if (item.quantity > 1) {
-        item.quantity--;
-      }
-    },
-    getTotalPrice() {
-      return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-    },
-    getImageUrl(image) {
-      return `https://polskoydm.pythonanywhere.com/static/uploads/${image}`;
-    },
-    removeItem(item) {
-      const index = this.cartItems.findIndex(cartItem => cartItem.id === item.id);
-      if (index > -1) {
-        this.cartItems.splice(index, 1);
-      }
-    }
-  }
-};
-</script>
