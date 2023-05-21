@@ -106,7 +106,7 @@ export default {
           purchase_units: [
             {
               amount: {
-                value: this.getTotalPrice().toString() // Convert to string
+                value: this.getTotalPrice().toString()  // Convert to string
               }
             }
           ]
