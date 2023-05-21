@@ -37,7 +37,7 @@
     methods: {
       fetchOrders(email) {
         // make an HTTP request to the '/history' endpoint with the email as a query parameter
-        fetch(`/history?email=${email}`)
+        fetch(`https://polskoydm.pythonanywhere.com//history?email=${email}`)
           .then(response => response.json())
           .then(data => {
             this.orders = data; // assign the retrieved data to the 'orders' array
