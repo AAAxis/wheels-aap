@@ -64,7 +64,7 @@ export default {
       // Retrieve address, email, and name from local storage
   const address = localStorage.getItem('address');
   const email = localStorage.getItem('email');
-  const name = localStorage.getItem('name');
+  const name = localStorage.getItem('username');
 
   // Prepare the data for the order
   const orderData = {
