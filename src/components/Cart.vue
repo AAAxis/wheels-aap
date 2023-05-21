@@ -69,16 +69,17 @@ export default {
       paypal.Buttons({
         createOrder: function (data, actions) {
           // Set up the transaction
-          return actions.order.create({
-            purchase_units: [
-              {
-                amount: {
-                  value: this.order.total.toString(),
-                },
-              },
-            ],
-          });
-        },
+             // Set up the transaction
+             return actions.order.create({
+              purchase_units: [
+                {
+                  amount: {
+                    value: this.order.total.toString()
+                  }
+                }
+              ]
+            });
+          },
         onApprove: function (data, actions) {
           // Capture the funds from the transaction
           return actions.order.capture().then(function (details) {
