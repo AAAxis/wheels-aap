@@ -74,7 +74,7 @@ export default {
               purchase_units: [
                 {
                   amount: {
-                    value: this.order.total.toString()
+                    value: getTotalPrice()
                   }
                 }
               ]
