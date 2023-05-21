@@ -114,7 +114,7 @@ export default {
       },
       onApprove: function(data, actions) {
         // Redirect the user to the thank-you page with order details
-        const redirectUrl = `https://polskoydm.pythonanywhere.com/auth-thank/?order=${orderID}&name=${name}&address=${address}&email=${email}`;
+        const redirectUrl = `https://polskoydm.pythonanywhere.com/auth-thank?order=${orderID}&name=${name}&address=${address}&email=${email}`;
         // Perform the redirect here
         window.location.href = redirectUrl;
       }
