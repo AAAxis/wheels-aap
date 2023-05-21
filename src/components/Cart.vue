@@ -42,26 +42,17 @@
 </template>
 
 <script>
-function createOrder(data, actions) {
-  // Set up the transaction
-  return actions.order.create({
-    purchase_units: [
-      {
-        amount: {
-          value: this.getTotalPrice().toString() // Call the getTotalPrice() function within the component context
-        }
-      }
-    ]
-  });
-}
-
 export default {
+
   data() {
     return {
       isCheckoutClicked: false,
       // Other data properties
     };
   },
+
+  
+  
   props: {
     cartItems: {
       type: Array,
@@ -69,62 +60,80 @@ export default {
     }
   },
   methods: {
-    getTotalPrice() {
-      return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-    },
-    mounted() {
-      // Add the PayPal button rendering code here
-      paypal.Buttons({
-        createOrder: createOrder.bind(this), // Bind the function to the component context
-        onApprove: (data, actions) => {
-          // Redirect the user to the thank-you page with order details
-          const redirectUrl = `https://polskoydm.pythonanywhere.com/thank-you?order=${data.orderID}&name=${this.name}&address=${this.address}&email=${this.email}`;
-          // Perform the redirect here
-          window.location.href = redirectUrl;
-        }
-      }).render('#paypal-button-container');
-    },
     checkout() {
-      // Check if checkout button was already clicked
-      if (this.isCheckoutClicked) {
-        return;
-      }
-      // Mark the checkout button as clicked
-      this.isCheckoutClicked = true;
+  // Check if checkout button was already clicked
+  if (this.isCheckoutClicked) {
+    return;
+  }
+  
+  // Mark the checkout button as clicked
+  this.isCheckoutClicked = true;
+  
       // Retrieve address, email, and name from local storage
-      const address = localStorage.getItem('address');
-      const email = localStorage.getItem('email');
-      const name = localStorage.getItem('username');
-      // Prepare the data for the order
-      const orderData = {
-        total: this.getTotalPrice(),
-        address: address,
-        email: email,
-        name: name,
-        cart: JSON.stringify(this.cartItems)
-      };
-      // Make an HTTP POST request to your backend API endpoint
-      fetch('https://polskoydm.pythonanywhere.com/auth-checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(orderData)
-      })
-      .then(response => {
-        if (response.ok) {
-          // The order was successfully created
-          response.json().then(data => {
-            const orderID = data.orderID;
-            console.log(orderID);
-          });
-          // Perform any additional actions or show a success message
-        } else {
-          // There was an error creating the order
-          console.error('Error creating order');
-          // Handle the error or show an error message
-        }
-      });
+  const address = localStorage.getItem('address');
+  const email = localStorage.getItem('email');
+  const name = localStorage.getItem('username');
+
+  // Prepare the data for the order
+  const orderData = {
+    total: this.getTotalPrice(),
+    address: address,
+    email: email,
+    name: name,
+    cart: JSON.stringify(this.cartItems)
+  };
+
+  // Make an HTTP POST request to your backend API endpoint
+  fetch('https://polskoydm.pythonanywhere.com/auth-checkout', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(orderData)
+  })
+  .then(response => {
+    if (response.ok) {
+  // The order was successfully created
+  response.json().then(function(data) {
+    const orderID = data.orderID;
+    console.log(orderID);
+
+
+    // Add the PayPal button rendering code here
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        // Set up the transaction
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value: getTotalPrice().toString() // Call the getTotalPrice() function to calculate total price
+              }
+            }
+          ]
+        });
+      },
+      onApprove: function(data, actions) {
+        // Redirect the user to the thank-you page with order details
+        const redirectUrl = `https://polskoydm.pythonanywhere.com/thank-you?order=${orderID}&name=${name}&address=${address}&email=${email}`;
+        // Perform the redirect here
+        window.location.href = redirectUrl;
+      }
+    }).render('#paypal-button-container');
+  });
+
+  
+      // Perform any additional actions or show a success message
+    } else {
+      // There was an error creating the order
+      console.error('Error creating order');
+      // Handle the error or show an error message
+    }
+  })
+
+
+
+
     },
     increaseQuantity(item) {
       item.quantity++;
@@ -133,6 +142,9 @@ export default {
       if (item.quantity > 1) {
         item.quantity--;
       }
+    },
+    getTotalPrice() {
+      return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
     },
     getImageUrl(image) {
       return `https://polskoydm.pythonanywhere.com/static/uploads/${image}`;
@@ -143,21 +155,9 @@ export default {
         this.cartItems.splice(index, 1);
       }
     }
-  },
-  mounted() {
-    // Add the PayPal button rendering code here
-    this.$nextTick(() => {
-      paypal.Buttons({
-        createOrder: createOrder.bind(this), // Bind the function to the component context
-        onApprove: (data, actions) => {
-          // Redirect the user to the thank-you page with order details
-          const redirectUrl = `https://polskoydm.pythonanywhere.com/thank-you?order=${data.orderID}&name=${this.name}&address=${this.address}&email=${this.email}`;
-          // Perform the redirect here
-          window.location.href = redirectUrl;
-        }
-      }).render('#paypal-button-container');
-    });
+    
   }
+  
 };
 </script>
 
