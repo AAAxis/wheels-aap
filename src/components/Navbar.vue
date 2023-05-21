@@ -12,7 +12,6 @@
         <span class="footer-button-label">Profile</span>
       </a>
 
-    <div class="navbar">
       <a @click="showComponent('Dashboard')" class="footer-button">
         <i class="fa-solid fa-house fa-lg"></i>
         <span class="footer-button-label">Home</span>
@@ -34,7 +33,7 @@
   </div>
   
       <!-- Rest of the Navbar content -->
-    </div>
+
   
     <div id="mySidenav" class="sidenav">
       <!-- Sidebar content -->
