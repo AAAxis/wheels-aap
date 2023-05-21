@@ -95,10 +95,9 @@ export default {
     if (response.ok) {
   // The order was successfully created
   response.json().then(function(data) {
+    const totalPrice = data.total;
     const orderID = data.orderID;
-    console.log(orderID);
-
-
+   
     // Add the PayPal button rendering code here
     paypal.Buttons({
       createOrder: function(data, actions) {
@@ -107,7 +106,7 @@ export default {
           purchase_units: [
             {
               amount: {
-                value: this.getTotalPrice().toString()  // Call the getTotalPrice() function to calculate total price
+                value: totalPrice.toString()  // Call the getTotalPrice() function to calculate total price
               }
             }
           ]
