@@ -33,7 +33,7 @@
 
 
     <!-- Render the PayPal button after checkout -->
-    <div v-if="isOrderCompleted">
+    <div v-if="isCheckoutClicked">
       <div class="paypal-button-container">
         <div id="paypal-button-container"></div>
       </div>
