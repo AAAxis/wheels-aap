@@ -61,15 +61,6 @@ import 'swiper/swiper-bundle.css';
 
 export default {
 
-
-
-   
-    props: {
-    cartItems: {
-      type: Array,
-      required: true
-    }
-  },
  
   data() {
     return {
