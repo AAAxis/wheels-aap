@@ -105,12 +105,7 @@
 }
 
 .checkout-button {
-  padding: 10px 20px;
-  font-size: 18px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  font-weight: bold;
+  
   cursor: pointer;
 }
 }
