@@ -24,8 +24,8 @@ export default {
       localStorage.setItem('email', email.value);
       localStorage.setItem('image', image.value);
       localStorage.setItem('username', username.value);
-      localStorage.setItem('address', image.value);
-      localStorage.setItem('mobile', image.value);
+      localStorage.setItem('address', address.value);
+      localStorage.setItem('mobile', mobile.value);
 
       // Redirect to the dashboard using the router
       router.push({ name: 'Index' });
